@@ -30,6 +30,7 @@ class HeroViewHolder extends RecyclerView.ViewHolder {
     private ImageView mHeroIcon;
     private TextView mSpecies;
     private TextView mProfession;
+    private ImageView mAbilityIcon;
     private TextView mCost;
 
     HeroViewHolder(@NonNull View itemView) {
@@ -38,6 +39,7 @@ class HeroViewHolder extends RecyclerView.ViewHolder {
         mName = itemView.findViewById(R.id.name);
         mSpecies = itemView.findViewById(R.id.species);
         mProfession = itemView.findViewById(R.id.profession);
+        mAbilityIcon = itemView.findViewById(R.id.ability_icon);
         mCost = itemView.findViewById(R.id.cost);
     }
 
@@ -51,6 +53,7 @@ class HeroViewHolder extends RecyclerView.ViewHolder {
         mSpecies.setTextColor(ContextCompat.getColor(context, hero.speciesList[0].colorRes));
         mProfession.setText(hero.profession.name);
         mProfession.setTextColor(ContextCompat.getColor(context, hero.profession.colorRes));
+        Glide.with(context).load(hero.ability.iconRes).into(mAbilityIcon);
         mCost.setText(context.getString(R.string.hero_list_cost, hero.price.price));
     }
 
