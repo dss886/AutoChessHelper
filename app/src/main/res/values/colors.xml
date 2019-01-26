@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="white">#FFFFFF</color>
+
+    <!-- Main Color is Used for Layout Background -->
+    <color name="main_1">#27272E</color>
+    <color name="main_2">#33333C</color>
+    <color name="main_3">#37373F</color>
+    <color name="main_4">#3B3C46</color>
+    <color name="main_5">#3F404A</color>
+
+    <!-- Accent Color is Used for Tint/Accent... -->
+    <color name="accent_yellow_1">#FFCF44</color>
+    <color name="accent_green_1">#265B57</color>
+    <color name="accent_green_2">#53B683</color>
+    <color name="accent_green_3">#76EBBD</color>
+    <color name="accent_green_4">#5576EBBD</color>
+
+    <!-- Grey Color is Used for Labels/Tips/Disabled -->
+    <color name="grey_1">#DDDDDD</color>
+    <color name="grey_2">#888888</color>
+    <color name="grey_3">#22FFFFFF</color>
+
+    <!-- Palette Color is Used for Text Color -->
+    <color name="palette_10">#EEEEEE</color>
+    <color name="palette_20">#CCCCCC</color>
+    <color name="palette_30">#9E9E9E</color>
+    <color name="palette_40">#F48FB1</color>
+    <color name="palette_50">#DD3333</color>
+    <color name="palette_60">#B74744</color>
+    <color name="palette_65">#A1887F</color>
+    <color name="palette_70">#FF9939</color>
+    <color name="palette_80">#EEDE2B</color>
+    <color name="palette_90">#C0CA33</color>
+    <color name="palette_100">#99987B</color>
+    <color name="palette_110">#388E3C</color>
+    <color name="palette_125">#81D4FA</color>
+    <color name="palette_130">#00BCD4</color>
+    <color name="palette_140">#039BE5</color>
+    <color name="palette_150">#5C6BC0</color>
+    <color name="palette_160">#BEBEFB</color>
+    <color name="palette_170">#B39DDB</color>
+    <color name="palette_180">#E040FB</color>
+    <color name="palette_190">#AB47BC</color>
+    <color name="palette_200">#B17F3D</color>
+    <color name="palette_210">#3D61C4</color>
+    <color name="palette_220">#CAAE80</color>
+
+</resources>

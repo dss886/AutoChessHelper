@@ -1,0 +1,16 @@
+<resources>
+
+    <dimen name="toolbar_height">56dp</dimen>
+
+    <!-- For Hero Header Collapsing -->
+    <dimen name="hero_header_height">200dp</dimen>
+    <dimen name="hero_header_logo_size_expanded">48dp</dimen>
+    <dimen name="hero_header_logo_size_collapsed">24dp</dimen>
+    <dimen name="hero_header_logo_margin_start_collapsed">16dp</dimen>
+    <dimen name="hero_header_logo_margin_top_expanded">42dp</dimen>
+    <dimen name="hero_header_logo_margin_top_collapsed">16dp</dimen>
+    <dimen name="hero_header_title_margin_top_expanded">108dp</dimen>
+    <dimen name="hero_header_title_margin_start_collapsed">48dp</dimen>
+    <dimen name="hero_header_tips_margin_top_expanded">164dp</dimen>
+
+</resources>

@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">自走棋助手</string>
+
+    <string name="title_data">资料</string>
+    <string name="title_dashboard">搭配</string>
+    <string name="title_news">攻略</string>
+
+    <string name="hero_app_bar_tip">&#160;新年伊始，下棋风暴，重现江湖&#160;</string>
+
+    <string name="hero_list_footer">共计 %1$d 位英雄</string>
+    <string name="hero_list_cost">x %1$d</string>
+
+</resources>
