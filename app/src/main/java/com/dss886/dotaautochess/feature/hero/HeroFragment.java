@@ -24,6 +24,9 @@ public class HeroFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_hero, container, false);
 
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
+        // Item caching of RecyclerView may cause reusing item in a wrong way,
+        // I haven't found a suitable solution, so set it to zero...
+        recyclerView.setItemViewCacheSize(0);
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
         HeroAdapter heroAdapter = new HeroAdapter();
         recyclerView.setAdapter(heroAdapter);
