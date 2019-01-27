@@ -1,4 +1,4 @@
-package com.dss886.dotaautochess.feature.hero;
+package com.dss886.dotaautochess.feature.hero.holder;
 
 import android.view.View;
 import android.widget.TextView;
@@ -11,17 +11,17 @@ import androidx.recyclerview.widget.RecyclerView;
 /**
  * Created by dss886 on 2019/1/25.
  */
-class HeaderHolder extends RecyclerView.ViewHolder {
+public class FooterHolder extends RecyclerView.ViewHolder {
 
     private TextView mTextView;
 
-    HeaderHolder(@NonNull View itemView) {
+    public FooterHolder(@NonNull View itemView) {
         super(itemView);
         mTextView = itemView.findViewById(R.id.text);
     }
 
-    void bind(String level) {
-        mTextView.setText(level);
+    public void bind(int count) {
+        mTextView.setText(mTextView.getContext().getString(R.string.hero_list_footer, count));
     }
 
 }

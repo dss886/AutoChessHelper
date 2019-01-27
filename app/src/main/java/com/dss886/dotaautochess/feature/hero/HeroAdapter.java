@@ -6,6 +6,9 @@ import android.view.ViewGroup;
 
 import com.dss886.dotaautochess.R;
 import com.dss886.dotaautochess.data.Hero;
+import com.dss886.dotaautochess.feature.hero.holder.FooterHolder;
+import com.dss886.dotaautochess.feature.hero.holder.HeaderHolder;
+import com.dss886.dotaautochess.feature.hero.holder.HeroViewHolder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +24,6 @@ public class HeroAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private static final int TYPE_HEADER = 1000;
     private static final int TYPE_FOOTER = 1001;
     private static final int TYPE_HERO = 1002;
-    private static final String[] LEVELS = new String[]{"普通", "罕见", "稀有", "神话", "传说"};
 
     private static class DataWrapper {
         Object data;
@@ -38,18 +40,27 @@ public class HeroAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         }
     }
 
+    private RecyclerView mRecyclerView;
     private List<DataWrapper> mDataList = new ArrayList<>();
+    private int mCurrentExpandedPosition = -1;
+    private long mLastExpandCollapseTime = 0L;
 
     HeroAdapter() {
         int currentLevel = 0;
         for (Hero hero : Hero.values()) {
             if (hero.price.price > currentLevel) {
-                mDataList.add(new DataWrapper(TYPE_HEADER, LEVELS[currentLevel]));
+                mDataList.add(new DataWrapper(TYPE_HEADER, hero.price.description));
                 currentLevel++;
             }
             mDataList.add(new DataWrapper(TYPE_HERO, hero));
         }
         mDataList.add(new DataWrapper(TYPE_FOOTER, Hero.values().length));
+    }
+
+    @Override
+    public void onAttachedToRecyclerView(@NonNull RecyclerView recyclerView) {
+        super.onAttachedToRecyclerView(recyclerView);
+        mRecyclerView = recyclerView;
     }
 
     @NonNull
@@ -64,7 +75,7 @@ public class HeroAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             return new FooterHolder(view);
         } else {
             View view = inflater.inflate(R.layout.data_item_hero, parent, false);
-            return new HeroViewHolder(view);
+            return new HeroViewHolder(this, view);
         }
     }
 
@@ -79,7 +90,7 @@ public class HeroAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             ((FooterHolder) holder).bind(count);
         } else if (holder instanceof HeroViewHolder) {
             Hero hero = data.get();
-            ((HeroViewHolder) holder).bind(hero);
+            ((HeroViewHolder) holder).bind(hero, position, mCurrentExpandedPosition == position);
         }
     }
 
@@ -91,5 +102,34 @@ public class HeroAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     @Override
     public int getItemCount() {
         return mDataList.size();
+    }
+
+    /**
+     * Only allow one item to expand.
+     * Method notifyItemChange() has some issues on performance here,
+     * so we have to expand it by do our own animations.
+     */
+    public void onItemExpandToggle(int position) {
+        if (position < 0 || mRecyclerView == null) {
+            return;
+        }
+        long now = System.currentTimeMillis();
+        if (now - mLastExpandCollapseTime <= 300L) {
+            return;
+        }
+        mLastExpandCollapseTime = now;
+
+        boolean isExpand = mCurrentExpandedPosition != position;
+        if (isExpand && mCurrentExpandedPosition >= 0) {
+            RecyclerView.ViewHolder holder = mRecyclerView.findViewHolderForAdapterPosition(mCurrentExpandedPosition);
+            if (holder instanceof HeroViewHolder) {
+                ((HeroViewHolder) holder).doExpandOrCollapse(false);
+            }
+        }
+        RecyclerView.ViewHolder holder = mRecyclerView.findViewHolderForAdapterPosition(position);
+        if (holder instanceof HeroViewHolder) {
+            ((HeroViewHolder) holder).doExpandOrCollapse(isExpand);
+        }
+        mCurrentExpandedPosition = isExpand ? position : -1;
     }
 }

@@ -1,4 +1,4 @@
-package com.dss886.dotaautochess.feature.hero;
+package com.dss886.dotaautochess.feature.hero.header;
 
 import android.content.Context;
 import android.content.res.Resources;
