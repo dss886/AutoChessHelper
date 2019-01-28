@@ -17,6 +17,7 @@ import com.dss886.dotaautochess.R;
 import com.dss886.dotaautochess.data.Hero;
 import com.dss886.dotaautochess.data.Species;
 import com.dss886.dotaautochess.feature.hero.HeroAdapter;
+import com.dss886.dotaautochess.utils.BuffUtils;
 import com.dss886.dotaautochess.utils.RecyclerViewUtils;
 import com.dss886.dotaautochess.utils.StringUtils;
 import com.dss886.dotaautochess.utils.UIUtils;
@@ -46,8 +47,10 @@ public class HeroViewHolder extends RecyclerView.ViewHolder {
     private View mExpandLayout;
     private TextView mBuffTitle1;
     private TextView mBuffContent1;
+    private View mDivider1;
     private TextView mBuffTitle2;
     private TextView mBuffContent2;
+    private View mDivider2;
     private TextView mBuffTitle3;
     private TextView mBuffContent3;
 
@@ -66,8 +69,10 @@ public class HeroViewHolder extends RecyclerView.ViewHolder {
         mExpandLayout = itemView.findViewById(R.id.expand_layout);
         mBuffTitle1 = itemView.findViewById(R.id.buff_title_1);
         mBuffContent1 = itemView.findViewById(R.id.buff_content_1);
+        mDivider1 = itemView.findViewById(R.id.divider_1);
         mBuffTitle2 = itemView.findViewById(R.id.buff_title_2);
         mBuffContent2 = itemView.findViewById(R.id.buff_content_2);
+        mDivider2 = itemView.findViewById(R.id.divider_2);
         mBuffTitle3 = itemView.findViewById(R.id.buff_title_3);
         mBuffContent3 = itemView.findViewById(R.id.buff_content_3);
     }
@@ -96,20 +101,22 @@ public class HeroViewHolder extends RecyclerView.ViewHolder {
         mExpandLayout.setVisibility(isExpanded ? View.VISIBLE : View.GONE);
         mBuffTitle1.setText(hero.speciesList[0].buffName);
         mBuffTitle1.setTextColor(ContextCompat.getColor(context, hero.speciesList[0].colorRes));
-        mBuffContent1.setText(hero.speciesList[0].getBuffDescription(context));
+        mBuffContent1.setText(BuffUtils.getBuffDescription(context, hero.speciesList[0]));
         if (hero.speciesList.length > 1) {
             mBuffTitle2.setVisibility(View.VISIBLE);
             mBuffContent2.setVisibility(View.VISIBLE);
+            mDivider2.setVisibility(View.VISIBLE);
             mBuffTitle2.setText(hero.speciesList[1].buffName);
             mBuffTitle2.setTextColor(ContextCompat.getColor(context, hero.speciesList[1].colorRes));
-            mBuffContent2.setText(hero.speciesList[1].getBuffDescription(context));
+            mBuffContent2.setText(BuffUtils.getBuffDescription(context, hero.speciesList[1]));
         } else {
             mBuffTitle2.setVisibility(View.GONE);
             mBuffContent2.setVisibility(View.GONE);
+            mDivider2.setVisibility(View.GONE);
         }
         mBuffTitle3.setText(hero.profession.buffName);
         mBuffTitle3.setTextColor(ContextCompat.getColor(context, hero.profession.colorRes));
-        mBuffContent3.setText(hero.profession.getBuffDescription(context));
+        mBuffContent3.setText(BuffUtils.getBuffDescription(context, hero.profession));
         // Measure the mExpandLayout to get height before rendering
         int widthMeasureSpec = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
         int heightMeasureSpec = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);

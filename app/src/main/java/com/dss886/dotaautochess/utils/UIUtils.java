@@ -65,4 +65,10 @@ public class UIUtils {
         }
     }
 
+    public static int getColorBrightness(int color) {
+        return ((color & 0xff) * 19595
+                + ((color >> 8) & 0xff) * 38469
+                + ((color >> 16) & 0xff) * 7472) >> 16;
+    }
+
 }

@@ -18,7 +18,7 @@
             android:layout_width="75dp"
             android:layout_height="42dp"
             android:layout_marginStart="16dp"
-            android:background="@color/main_4"/>
+            android:background="@color/white_0a"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -92,7 +92,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="6dp"
                 android:includeFontPadding="false"
-                android:textColor="@color/grey_1"
+                android:textColor="@color/white_bb"
                 android:textSize="14sp"
                 tools:text="x1"/>
 
@@ -124,14 +124,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="11sp"
-            android:textColor="@color/grey_2"/>
+            android:textColor="@color/white_66"/>
+
+        <View
+            android:id="@+id/divider_1"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="6dp"
+            android:background="@color/color_primary"/>
 
         <TextView
             android:id="@+id/buff_title_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:includeFontPadding="false"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="6dp"
             android:textSize="12sp"/>
 
         <TextView
@@ -140,14 +147,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="11sp"
-            android:textColor="@color/grey_2"/>
+            android:textColor="@color/white_66"/>
+
+        <View
+            android:id="@+id/divider_2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="6dp"
+            android:background="@color/color_primary"/>
 
         <TextView
             android:id="@+id/buff_title_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:includeFontPadding="false"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="6dp"
             android:textSize="12sp"/>
 
         <TextView
@@ -156,7 +170,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="11sp"
-            android:textColor="@color/grey_2"/>
+            android:textColor="@color/white_66"/>
 
     </LinearLayout>
 

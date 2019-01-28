@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginBottom="12dp"
+    android:orientation="vertical"
+    android:gravity="center_vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <View
+            android:layout_width="2dp"
+            android:layout_height="18dp"
+            android:layout_marginStart="8dp"
+            android:background="@color/color_accent"/>
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:includeFontPadding="false"
+            android:textSize="14sp"
+            android:textColor="@color/color_accent"
+            android:textStyle="bold"
+            android:layout_marginStart="8dp"/>
+
+    </LinearLayout>
+
+    <com.google.android.material.internal.FlowLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="8dp"
+        app:lineSpacing="8dp"
+        app:itemSpacing="8dp">
+
+        <include android:id="@+id/item1"
+                 layout="@layout/match_item_overview_item"/>
+        <include android:id="@+id/item2"
+                 layout="@layout/match_item_overview_item"/>
+        <include android:id="@+id/item3"
+                 layout="@layout/match_item_overview_item"/>
+        <include android:id="@+id/item4"
+                 layout="@layout/match_item_overview_item"/>
+        <include android:id="@+id/item5"
+                 layout="@layout/match_item_overview_item"/>
+        <include android:id="@+id/item6"
+                 layout="@layout/match_item_overview_item"/>
+        <include android:id="@+id/item7"
+                 layout="@layout/match_item_overview_item"/>
+        <include android:id="@+id/item8"
+                 layout="@layout/match_item_overview_item"/>
+        <include android:id="@+id/item9"
+                 layout="@layout/match_item_overview_item"/>
+        <include android:id="@+id/item10"
+                 layout="@layout/match_item_overview_item"/>
+
+    </com.google.android.material.internal.FlowLayout>
+
+</LinearLayout>

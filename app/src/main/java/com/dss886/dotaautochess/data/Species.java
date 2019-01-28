@@ -1,9 +1,6 @@
 package com.dss886.dotaautochess.data;
 
-import android.content.Context;
-
 import com.dss886.dotaautochess.R;
-import com.dss886.dotaautochess.utils.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +8,7 @@ import java.util.List;
 /**
  * Created by dss886 on 2019/1/25.
  */
-public enum Species {
+public enum Species implements IBuffHolder {
 
     Human("人类", R.color.palette_10, "劝降", new ArrayList<Buff>() {{
         add(new Buff(2, "所有友方人类攻击敌人有20%的概率使敌人缴械3秒。"));
@@ -78,14 +75,23 @@ public enum Species {
         this.buffList = buffList;
     }
 
-    public String getBuffDescription(Context context) {
-        List<String> descList = new ArrayList<>();
-        if (buffList != null) {
-            for (Buff buff : buffList) {
-                descList.add(context.getString(R.string.data_buff_content, buff.count, name, buff.description));
-            }
-        }
-        return StringUtils.join("\n", descList);
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public int getColorRes() {
+        return colorRes;
+    }
+
+    @Override
+    public List<Buff> getBuffList() {
+        return buffList;
+    }
+
+    public String getBuffName() {
+        return buffName;
     }
 
 }

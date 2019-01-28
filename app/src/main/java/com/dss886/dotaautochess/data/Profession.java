@@ -1,9 +1,6 @@
 package com.dss886.dotaautochess.data;
 
-import android.content.Context;
-
 import com.dss886.dotaautochess.R;
-import com.dss886.dotaautochess.utils.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +8,7 @@ import java.util.List;
 /**
  * Created by dss886 on 2019/1/25.
  */
-public enum Profession {
+public enum Profession implements IBuffHolder {
 
     Warrior("战士", R.color.palette_220, "铜皮铁甲", new ArrayList<Buff>() {{
         add(new Buff(3, "所有友方战士的护甲+8。"));
@@ -65,14 +62,23 @@ public enum Profession {
         this.buffList = buffList;
     }
 
-    public String getBuffDescription(Context context) {
-        List<String> descList = new ArrayList<>();
-        if (buffList != null) {
-            for (Buff buff : buffList) {
-                descList.add(context.getString(R.string.data_buff_content, buff.count, name, buff.description));
-            }
-        }
-        return StringUtils.join("\n", descList);
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public int getColorRes() {
+        return colorRes;
+    }
+
+    @Override
+    public List<Buff> getBuffList() {
+        return buffList;
+    }
+
+    public String getBuffName() {
+        return buffName;
     }
 
 }

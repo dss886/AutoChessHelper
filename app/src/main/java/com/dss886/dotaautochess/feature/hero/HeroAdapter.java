@@ -68,13 +68,13 @@ public class HeroAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         if (viewType == TYPE_HEADER) {
-            View view = inflater.inflate(R.layout.data_item_header, parent, false);
+            View view = inflater.inflate(R.layout.hero_item_header, parent, false);
             return new HeaderHolder(view);
         } else if (viewType == TYPE_FOOTER) {
-            View view = inflater.inflate(R.layout.data_item_footer, parent, false);
+            View view = inflater.inflate(R.layout.hero_item_footer, parent, false);
             return new FooterHolder(view);
         } else {
-            View view = inflater.inflate(R.layout.data_item_hero, parent, false);
+            View view = inflater.inflate(R.layout.hero_item_hero, parent, false);
             return new HeroViewHolder(this, view);
         }
     }

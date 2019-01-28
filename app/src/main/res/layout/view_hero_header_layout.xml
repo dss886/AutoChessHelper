@@ -21,7 +21,7 @@
         android:layout_height="wrap_content"
         android:text="@string/app_name"
         android:layout_marginTop="@dimen/hero_header_title_margin_top_expanded"
-        android:textColor="@color/grey_1"
+        android:textColor="@color/white_bb"
         android:textSize="18sp"/>
 
     <TextView
@@ -32,15 +32,15 @@
         android:layout_centerHorizontal="true"
         android:textStyle="italic"
         android:textSize="12sp"
-        android:textColor="@color/grey_3"
+        android:textColor="@color/white_22"
         android:layout_marginTop="@dimen/hero_header_tips_margin_top_expanded"/>
 
     <ImageView
-        android:layout_width="56dp"
-        android:layout_height="56dp"
+        android:layout_width="@dimen/toolbar_height"
+        android:layout_height="@dimen/toolbar_height"
         android:layout_gravity="end"
         android:layout_alignParentEnd="true"
-        android:padding="16dp"
+        android:padding="17dp"
         android:src="@drawable/ic_settings"/>
 
 </merge>

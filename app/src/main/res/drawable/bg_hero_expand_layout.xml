@@ -5,13 +5,12 @@
         android:bottom="2dp">
 
         <shape android:shape="rectangle">
-            <corners android:radius="4dp"/>
-            <solid android:color="@color/main_4" />
+            <solid android:color="@color/white_05" />
             <padding
-                android:top="8dp"
-                android:bottom="8dp"
-                android:left="8dp"
-                android:right="8dp"/>
+                android:top="10dp"
+                android:bottom="10dp"
+                android:left="10dp"
+                android:right="10dp"/>
         </shape>
 
     </item>

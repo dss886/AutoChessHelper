@@ -12,4 +12,10 @@
     <string name="hero_list_footer">共计 %1$d 位英雄</string>
     <string name="hero_list_cost">x %1$d</string>
 
+    <string name="match_hero_pool_title">英雄阵容</string>
+    <string name="match_species_title">种族概况</string>
+    <string name="match_profession_title">职业概况</string>
+    <string name="match_buff_title">增益列表</string>
+    <string name="match_species_and_profession_count">%1$s x%2$d</string>
+
 </resources>
