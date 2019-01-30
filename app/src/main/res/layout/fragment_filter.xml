@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.dss886.dotaautochess.widget.TitleView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/list_title_height_big"
+            android:text="@string/filter_price"/>
+
+        <com.dss886.dotaautochess.widget.SimpleGridLayout
+            android:id="@+id/grid_layout_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            app:columnCount="5"
+            app:itemMargin="4dp"
+            app:itemRatioWidth="2"
+            app:itemRatioHeight="1"/>
+
+        <com.dss886.dotaautochess.widget.TitleView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/list_title_height_big"
+            android:text="@string/filter_species"/>
+
+        <com.dss886.dotaautochess.widget.SimpleGridLayout
+            android:id="@+id/grid_layout_species"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            app:columnCount="4"
+            app:itemMargin="4dp"
+            app:itemRatioWidth="2"
+            app:itemRatioHeight="1"/>
+
+        <com.dss886.dotaautochess.widget.TitleView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/list_title_height_big"
+            android:text="@string/filter_profession"/>
+
+        <com.dss886.dotaautochess.widget.SimpleGridLayout
+            android:id="@+id/grid_layout_profession"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            app:columnCount="4"
+            app:itemMargin="4dp"
+            app:itemRatioWidth="2"
+            app:itemRatioHeight="1"/>
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

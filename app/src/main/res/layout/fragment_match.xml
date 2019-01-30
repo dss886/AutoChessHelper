@@ -3,13 +3,14 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/bg_match_header"
-        android:paddingBottom="16dp"
+        android:background="@color/color_primary"
+        android:paddingBottom="12dp"
         android:orientation="vertical">
 
         <LinearLayout
@@ -27,8 +28,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:layout_marginStart="8dp"
+                android:textSize="20sp"
+                android:layout_marginStart="16dp"
                 android:textColor="@color/white_bb"
                 android:text="@string/app_name"/>
 
@@ -41,43 +42,25 @@
                 android:layout_width="@dimen/toolbar_height"
                 android:layout_height="@dimen/toolbar_height"
                 android:padding="17dp"
-                android:src="@drawable/ic_settings"/>
+                android:src="@drawable/ic_share"/>
 
         </LinearLayout>
 
-        <LinearLayout
+        <com.dss886.dotaautochess.widget.TitleView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:orientation="horizontal"
-            android:gravity="center_vertical">
+            android:layout_height="@dimen/list_title_height_big"
+            android:text="@string/match_hero_pool_title"/>
 
-            <View
-                android:layout_width="2dp"
-                android:layout_height="18dp"
-                android:layout_marginStart="8dp"
-                android:background="@color/color_accent"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:textColor="@color/color_accent"
-                android:includeFontPadding="false"
-                android:textStyle="bold"
-                android:textSize="16sp"
-                android:text="@string/match_hero_pool_title"/>
-
-        </LinearLayout>
-
-
-        <com.dss886.dotaautochess.feature.match.HeroPoolView
+        <com.dss886.dotaautochess.feature.match.pool.HeroPoolView
             android:id="@+id/hero_pool"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
             android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"/>
+            android:layout_marginEnd="16dp"
+            app:columnCount="5"
+            app:itemMargin="@dimen/match_hero_pool_item_margin"
+            app:itemRatioHeight="144"
+            app:itemRatioWidth="256"/>
 
     </LinearLayout>
 
@@ -85,8 +68,18 @@
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingTop="8dp"
         android:paddingBottom="12dp"
         android:clipToPadding="false"/>
+
+    <TextView
+        android:id="@+id/empty_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:textColor="@color/white_44"
+        android:lineSpacingExtra="8dp"
+        android:textSize="12sp"
+        android:visibility="gone"
+        android:text="@string/match_empty_view_tip"/>
 
 </LinearLayout>

@@ -4,40 +4,21 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_marginBottom="12dp"
     android:orientation="vertical"
     android:gravity="center_vertical">
 
-    <LinearLayout
+    <com.dss886.dotaautochess.widget.TitleView
+        android:id="@+id/title_view"
         android:layout_width="match_parent"
-        android:layout_height="36dp"
-        android:orientation="horizontal"
-        android:gravity="center_vertical">
-
-        <View
-            android:layout_width="2dp"
-            android:layout_height="18dp"
-            android:layout_marginStart="8dp"
-            android:background="@color/color_accent"/>
-
-        <TextView
-            android:id="@+id/name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:includeFontPadding="false"
-            android:textSize="14sp"
-            android:textColor="@color/color_accent"
-            android:textStyle="bold"
-            android:layout_marginStart="8dp"/>
-
-    </LinearLayout>
+        android:layout_height="@dimen/list_title_height_big"/>
 
     <com.google.android.material.internal.FlowLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginTop="8dp"
+        android:background="@color/white_08"
+        android:padding="10dp"
         app:lineSpacing="8dp"
         app:itemSpacing="8dp">
 

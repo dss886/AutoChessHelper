@@ -71,4 +71,10 @@ public class UIUtils {
                 + ((color >> 16) & 0xff) * 7472) >> 16;
     }
 
+    public static void setVisibility(View view, int visibility) {
+        if (view != null && view.getVisibility() != visibility) {
+            view.setVisibility(visibility);
+        }
+    }
+
 }

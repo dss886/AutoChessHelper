@@ -30,25 +30,44 @@ public class MatchManager {
     }
 
     @NonNull
-    private final List<Hero> mHeroList = new ArrayList<>();
+    private final ArrayList<Hero> mHeroList = new ArrayList<>();
+    @NonNull
+    private final List<MatchChangeListener> mChangeListeners = new ArrayList<>();
 
     private MatchManager() {
-        for (int i = 0; i < 10; i++) {
-            addHero(Hero.values()[i]);
+        for (int i = 0; i < 8; i++) {
+            mHeroList.add(Hero.values()[i]);
+        }
+    }
+
+    public void registerChangeListener(MatchChangeListener listener) {
+        mChangeListeners.add(listener);
+    }
+
+    public void unregisterChangeListener(MatchChangeListener listener) {
+        mChangeListeners.remove(listener);
+    }
+
+    private void notifyListeners() {
+        for (MatchChangeListener listener : mChangeListeners) {
+            listener.onHeroesChanged();
         }
     }
 
     public void addHero(Hero hero) {
         mHeroList.add(hero);
+        notifyListeners();
     }
 
     public void removeHero(Hero hero) {
         mHeroList.remove(hero);
+        notifyListeners();
     }
 
     @NonNull
     public List<Hero> getHeroList() {
-        return mHeroList;
+        //noinspection unchecked
+        return (List<Hero>) mHeroList.clone();
     }
 
     public List<Pair<Species, Integer>> getSpeciesList() {

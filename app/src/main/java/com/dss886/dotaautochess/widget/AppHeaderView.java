@@ -1,4 +1,4 @@
-package com.dss886.dotaautochess.feature.hero.header;
+package com.dss886.dotaautochess.widget;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -12,7 +12,7 @@ import com.dss886.dotaautochess.utils.UIUtils;
 /**
  * Created by dss886 on 2019/1/26.
  */
-public class HeroHeaderView extends RelativeLayout {
+public class AppHeaderView extends RelativeLayout {
 
     private View mLogo;
     private View mTitle;
@@ -33,21 +33,21 @@ public class HeroHeaderView extends RelativeLayout {
 
     private float mTipsMarginTopExpanded;
 
-    public HeroHeaderView(Context context) {
+    public AppHeaderView(Context context) {
         this(context, null);
     }
 
-    public HeroHeaderView(Context context, AttributeSet attrs) {
+    public AppHeaderView(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public HeroHeaderView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public AppHeaderView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(context);
     }
 
     private void init(Context context) {
-        View.inflate(context, R.layout.view_hero_header_layout, this);
+        View.inflate(context, R.layout.widget_app_header_view, this);
         mLogo = findViewById(R.id.logo);
         mTitle = findViewById(R.id.title);
         mTips = findViewById(R.id.tips);

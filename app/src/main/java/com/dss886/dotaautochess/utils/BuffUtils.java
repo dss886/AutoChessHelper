@@ -9,8 +9,6 @@ import com.dss886.dotaautochess.data.IBuffHolder;
 import java.util.ArrayList;
 import java.util.List;
 
-import androidx.core.util.Pair;
-
 /**
  * Created by dss886 on 2019/1/28.
  */
@@ -31,21 +29,6 @@ public class BuffUtils {
             }
         }
         return StringUtils.join("\n", descList);
-    }
-
-    public static <T extends IBuffHolder> int getEnableBuffCount(List<Pair<T, Integer>> pairList) {
-        if (CollectionUtils.isEmpty(pairList)) {
-            return 0;
-        }
-        int enableCount = 0;
-        for (Pair<T, Integer> pair : pairList) {
-            if (pair.first != null && !CollectionUtils.isEmpty(pair.first.getBuffList()) && pair.second != null) {
-                if (pair.second >= pair.first.getBuffList().get(0).count) {
-                    enableCount++;
-                }
-            }
-        }
-        return enableCount;
     }
 
 }

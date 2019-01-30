@@ -37,6 +37,10 @@ class MatchAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     @NonNull private List<Pair<? extends IBuffHolder, Integer>> mMergedList;
 
     MatchAdapter() {
+        updateData();
+    }
+
+    public void updateData() {
         mSpeciesList = MatchManager.inst().getSpeciesList();
         mProfessionList = MatchManager.inst().getProfessionList();
         List<Pair<? extends IBuffHolder, Integer>> enableList = new ArrayList<>();
@@ -62,6 +66,7 @@ class MatchAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         mMergedList = new ArrayList<>();
         mMergedList.addAll(enableList);
         mMergedList.addAll(disableList);
+        notifyDataSetChanged();
     }
 
     @NonNull

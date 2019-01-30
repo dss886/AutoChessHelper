@@ -1,9 +1,6 @@
 package com.dss886.dotaautochess.feature.match.holder;
 
 import android.view.View;
-import android.widget.TextView;
-
-import com.dss886.dotaautochess.R;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,8 +15,6 @@ public class BuffTitleHolder extends RecyclerView.ViewHolder {
      */
     public BuffTitleHolder(@NonNull View itemView) {
         super(itemView);
-        TextView name = itemView.findViewById(R.id.name);
-        name.setText(itemView.getContext().getString(R.string.match_buff_title));
     }
 
 }

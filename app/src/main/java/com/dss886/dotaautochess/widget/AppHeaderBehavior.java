@@ -1,4 +1,4 @@
-package com.dss886.dotaautochess.feature.hero.header;
+package com.dss886.dotaautochess.widget;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -14,25 +14,25 @@ import androidx.coordinatorlayout.widget.CoordinatorLayout;
  * Created by dss886 on 2019/1/26.
  */
 @SuppressWarnings("unused")
-public class HeroHeaderBehavior extends CoordinatorLayout.Behavior<HeroHeaderView> {
+public class AppHeaderBehavior extends CoordinatorLayout.Behavior<AppHeaderView> {
 
     private float mHeaderMoveDistance;
 
-    public HeroHeaderBehavior() {}
+    public AppHeaderBehavior() {}
 
-    public HeroHeaderBehavior(Context context, AttributeSet attrs) {
+    public AppHeaderBehavior(Context context, AttributeSet attrs) {
         super(context, attrs);
         mHeaderMoveDistance = context.getResources().getDimension(R.dimen.hero_header_height)
                 - context.getResources().getDimension(R.dimen.toolbar_height);
     }
 
     @Override
-    public boolean layoutDependsOn(@NonNull CoordinatorLayout parent, @NonNull HeroHeaderView child, @NonNull View dependency) {
+    public boolean layoutDependsOn(@NonNull CoordinatorLayout parent, @NonNull AppHeaderView child, @NonNull View dependency) {
         return dependency instanceof AppBarLayout;
     }
 
     @Override
-    public boolean onDependentViewChanged(@NonNull CoordinatorLayout parent, @NonNull HeroHeaderView child, @NonNull View dependency) {
+    public boolean onDependentViewChanged(@NonNull CoordinatorLayout parent, @NonNull AppHeaderView child, @NonNull View dependency) {
         if (mHeaderMoveDistance == 0) {
             return false;
         }

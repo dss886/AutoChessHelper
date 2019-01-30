@@ -21,6 +21,11 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity
+            android:name=".feature.filter.FilterActivity"
+            android:screenOrientation="portrait"
+            android:saveEnabled="false"
+            android:label="@string/title_filter"/>
     </application>
 
 </manifest>
