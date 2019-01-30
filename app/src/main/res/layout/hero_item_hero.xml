@@ -126,7 +126,6 @@
             android:textColor="@color/white_66"/>
 
         <View
-            android:id="@+id/divider_1"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginTop="6dp"
