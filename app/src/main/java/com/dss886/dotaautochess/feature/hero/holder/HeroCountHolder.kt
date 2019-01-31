@@ -8,7 +8,7 @@ import com.dss886.dotaautochess.R
 /**
  * Created by dss886 on 2019/1/25.
  */
-class FooterHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+class HeroCountHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     private val mTextView: TextView = itemView.findViewById(R.id.text)
 

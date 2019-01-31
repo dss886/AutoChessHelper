@@ -13,6 +13,9 @@ object MatchManager {
     private val mHeroList = ArrayList<Hero>()
     private val mChangeListeners = ArrayList<MatchChangeListener>()
 
+    val size: Int
+        get() = mHeroList.size
+
     @Suppress("UNCHECKED_CAST")
     val heroList: List<Hero>
         get() = mHeroList.clone() as List<Hero>
@@ -49,9 +52,17 @@ object MatchManager {
         }
     }
 
-    fun addHero(hero: Hero) {
-        mHeroList.add(hero)
-        notifyListeners()
+    fun addHero(hero: Hero): Boolean {
+        if (!mHeroList.contains(hero) && mHeroList.size < 10) {
+            mHeroList.add(hero)
+            notifyListeners()
+            return true
+        }
+        return false
+    }
+
+    fun containHero(hero: Hero): Boolean {
+        return mHeroList.contains(hero)
     }
 
     fun removeHero(hero: Hero) {

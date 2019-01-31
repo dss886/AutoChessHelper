@@ -3,7 +3,7 @@ package com.dss886.dotaautochess
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.dss886.dotaautochess.feature.hero.HeroFragment
+import com.dss886.dotaautochess.feature.hero.AllHeroFragment
 import com.dss886.dotaautochess.feature.match.MatchFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
         private const val TAG_FRAGMENT_NEWS = "3"
     }
 
-    private val mHeroFragment = HeroFragment()
+    private val mHeroFragment = AllHeroFragment()
     private val mMatchFragment = MatchFragment()
     private val mNewsFragment = NewsFragment()
     private val mFragmentManager = supportFragmentManager

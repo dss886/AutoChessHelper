@@ -13,23 +13,16 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.dss886.dotaautochess.R
 import com.dss886.dotaautochess.data.Hero
-import com.dss886.dotaautochess.data.Species
-import com.dss886.dotaautochess.feature.hero.HeroAdapter
-import com.dss886.dotaautochess.utils.BuffUtils
-import com.dss886.dotaautochess.utils.RecyclerViewUtils
-import com.dss886.dotaautochess.utils.UIUtils
-import com.dss886.dotaautochess.utils.dpInt
-import java.util.*
+import com.dss886.dotaautochess.utils.*
 
 /**
  * Created by dss886 on 2019/1/25.
  */
-class HeroViewHolder(private val mHeroAdapter: HeroAdapter, itemView: View) : RecyclerView.ViewHolder(itemView) {
+open class BaseHeroViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-    private val mTopLayout: View = itemView.findViewById(R.id.top_layout)
+    protected val mTopLayout: View = itemView.findViewById(R.id.top_layout)
     private val mHeroIcon: ImageView = itemView.findViewById(R.id.hero_icon)
     private val mName: TextView = itemView.findViewById(R.id.name)
     private val mSpecies: TextView = itemView.findViewById(R.id.species)
@@ -48,22 +41,21 @@ class HeroViewHolder(private val mHeroAdapter: HeroAdapter, itemView: View) : Re
 
     private var mExpandViewHeight: Float = 0.toFloat()
 
-    fun bind(hero: Hero, position: Int, isExpanded: Boolean) {
+    open fun bind(hero: Hero, position: Int, isExpanded: Boolean) {
         if (hero.speciesList.isEmpty()) {
             return
         }
         val context = mHeroIcon.context
-        Glide.with(context).load(hero.iconRes).into(mHeroIcon)
-        mHeroIcon.setImageResource(hero.iconRes)
+        mHeroIcon.loadImage(hero.iconRes)
         mName.text = String.format("%s★", hero.desc)
         mName.setTextColor(ContextCompat.getColor(context, hero.price.colorRes))
         mSpecies.text = buildSpeciesString(context, hero)
         mSpecies.setTextColor(ContextCompat.getColor(context, hero.speciesList[0].colorRes))
         mProfession.text = hero.profession.desc
         mProfession.setTextColor(ContextCompat.getColor(context, hero.profession.colorRes))
-        Glide.with(context).load(hero.ability.iconRes).into(mAbilityIcon)
+        mAbilityIcon.loadImage(hero.ability.iconRes)
         mCost.text = context.getString(R.string.hero_list_cost, hero.price.price)
-        mTopLayout.setOnClickListener { mHeroAdapter.onItemExpandToggle(position) }
+
         mExpandLayout.visibility = if (isExpanded) View.VISIBLE else View.GONE
         mBuffTitle1.text = hero.speciesList[0].buffName
         mBuffTitle1.setTextColor(ContextCompat.getColor(context, hero.speciesList[0].colorRes))
@@ -126,7 +118,7 @@ class HeroViewHolder(private val mHeroAdapter: HeroAdapter, itemView: View) : Re
     }
 
     private fun buildSpeciesString(context: Context, hero: Hero): SpannableString? {
-        val content = getSpeciesNameList(hero.speciesList).joinToString(" ")
+        val content = hero.speciesList.joinToString(" ") { it.desc }
         val ss = SpannableString(content)
         var start = 0
         for (species in hero.speciesList) {
@@ -137,14 +129,5 @@ class HeroViewHolder(private val mHeroAdapter: HeroAdapter, itemView: View) : Re
         }
         return ss
     }
-
-    private fun getSpeciesNameList(speciesList: List<Species>): List<String> {
-        val nameList = ArrayList<String>()
-        for (species in speciesList) {
-            nameList.add(species.desc)
-        }
-        return nameList
-    }
-
 
 }

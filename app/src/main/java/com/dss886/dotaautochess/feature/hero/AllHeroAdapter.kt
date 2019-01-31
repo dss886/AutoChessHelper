@@ -5,15 +5,16 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.dss886.dotaautochess.R
 import com.dss886.dotaautochess.data.Hero
-import com.dss886.dotaautochess.feature.hero.holder.FooterHolder
-import com.dss886.dotaautochess.feature.hero.holder.HeaderHolder
-import com.dss886.dotaautochess.feature.hero.holder.HeroViewHolder
+import com.dss886.dotaautochess.feature.hero.holder.BaseHeroViewHolder
+import com.dss886.dotaautochess.feature.hero.holder.DataHeroViewHolder
+import com.dss886.dotaautochess.feature.hero.holder.HeroCountHolder
+import com.dss886.dotaautochess.feature.hero.holder.HeroTitleHolder
 import java.util.*
 
 /**
  * Created by dss886 on 2019/1/25.
  */
-class HeroAdapter internal constructor() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class AllHeroAdapter internal constructor() : RecyclerView.Adapter<RecyclerView.ViewHolder>(), IHeroItemCallback{
 
     companion object {
         private const val TYPE_HEADER = 1000
@@ -37,7 +38,7 @@ class HeroAdapter internal constructor() : RecyclerView.Adapter<RecyclerView.Vie
         var currentLevel = 0
         for (hero in Hero.values()) {
             if (hero.price.price > currentLevel) {
-                mDataList.add(DataWrapper(TYPE_HEADER, hero.price.description))
+                mDataList.add(DataWrapper(TYPE_HEADER, hero.price.desc))
                 currentLevel++
             }
             mDataList.add(DataWrapper(TYPE_HERO, hero))
@@ -53,36 +54,18 @@ class HeroAdapter internal constructor() : RecyclerView.Adapter<RecyclerView.Vie
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         return when (viewType) {
-            TYPE_HEADER -> {
-                val view = inflater.inflate(R.layout.hero_item_header, parent, false)
-                HeaderHolder(view)
-            }
-            TYPE_FOOTER -> {
-                val view = inflater.inflate(R.layout.hero_item_footer, parent, false)
-                FooterHolder(view)
-            }
-            else -> {
-                val view = inflater.inflate(R.layout.hero_item_hero, parent, false)
-                HeroViewHolder(this, view)
-            }
+            TYPE_HEADER -> HeroTitleHolder(inflater.inflate(R.layout.hero_item_header, parent, false))
+            TYPE_FOOTER -> HeroCountHolder(inflater.inflate(R.layout.hero_item_footer, parent, false))
+            else -> DataHeroViewHolder(inflater.inflate(R.layout.hero_item_hero, parent, false), this)
         }
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val data = mDataList[position]
         when (holder) {
-            is HeaderHolder -> {
-                val level = data.get<String>()
-                holder.bind(level)
-            }
-            is FooterHolder -> {
-                val count = data.get<Int>()
-                holder.bind(count)
-            }
-            is HeroViewHolder -> {
-                val hero = data.get<Hero>()
-                holder.bind(hero, position, mCurrentExpandedPosition == position)
-            }
+            is HeroTitleHolder -> holder.bind(data.get())
+            is HeroCountHolder -> holder.bind(data.get())
+            is DataHeroViewHolder -> holder.bind(data.get(), position, mCurrentExpandedPosition == position)
         }
     }
 
@@ -99,7 +82,7 @@ class HeroAdapter internal constructor() : RecyclerView.Adapter<RecyclerView.Vie
      * Method notifyItemChange() has some issues on performance here,
      * so we have to expand it by do our own animations.
      */
-    fun onItemExpandToggle(position: Int) {
+    override fun onItemClick(position: Int, hero: Hero) {
         if (position < 0 || mRecyclerView == null) {
             return
         }
@@ -112,12 +95,12 @@ class HeroAdapter internal constructor() : RecyclerView.Adapter<RecyclerView.Vie
         val isExpand = mCurrentExpandedPosition != position
         if (isExpand && mCurrentExpandedPosition >= 0) {
             val holder = mRecyclerView!!.findViewHolderForAdapterPosition(mCurrentExpandedPosition)
-            if (holder is HeroViewHolder) {
+            if (holder is BaseHeroViewHolder) {
                 holder.doExpandOrCollapse(false)
             }
         }
         val holder = mRecyclerView!!.findViewHolderForAdapterPosition(position)
-        if (holder is HeroViewHolder) {
+        if (holder is BaseHeroViewHolder) {
             holder.doExpandOrCollapse(isExpand)
         }
         mCurrentExpandedPosition = if (isExpand) position else -1

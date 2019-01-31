@@ -5,7 +5,7 @@ import com.dss886.dotaautochess.R
 /**
  * Created by dss886 on 2019/1/25.
  */
-enum class Price constructor(var price: Int, var colorRes: Int, var description: String) {
+enum class Price constructor(var price: Int, var colorRes: Int, var desc: String) {
 
     GOLD_1(1, R.color.palette_20, "普通"),
     GOLD_2(2, R.color.palette_160, "罕见"),

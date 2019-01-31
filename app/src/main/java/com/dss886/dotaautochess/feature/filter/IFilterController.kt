@@ -7,12 +7,8 @@ import java.io.Serializable
  */
 interface IFilterController {
 
-    companion object {
-        const val DETAIL_TYPE_PRICE = 0
-        const val DETAIL_TYPE_SPECIES = 1
-        const val DETAIL_TYPE_PROFESSION = 2
-    }
+    fun goDetail(data: Serializable)
 
-    fun goDetail(type: Int, data: Serializable)
+    fun tryToAddHero()
 
 }

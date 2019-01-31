@@ -5,12 +5,11 @@ import android.content.Intent
 import android.util.AttributeSet
 import android.widget.ImageView
 import androidx.core.content.ContextCompat
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.dss886.dotaautochess.R
 import com.dss886.dotaautochess.data.Hero
 import com.dss886.dotaautochess.feature.filter.FilterActivity
 import com.dss886.dotaautochess.feature.match.manager.MatchManager
+import com.dss886.dotaautochess.utils.loadImage
 import com.dss886.dotaautochess.widget.SimpleGridLayout
 
 /**
@@ -45,7 +44,7 @@ class HeroPoolView @JvmOverloads constructor(context: Context, attrs: AttributeS
 
     private fun bindHeroItem(imageView: ImageView, hero: Hero) {
         imageView.scaleType = ImageView.ScaleType.CENTER_CROP
-        Glide.with(context).load(hero.iconRes).transition(DrawableTransitionOptions.withCrossFade()).into(imageView)
+        imageView.loadImage(hero.iconRes)
         imageView.setOnClickListener { MatchManager.removeHero(hero) }
     }
 

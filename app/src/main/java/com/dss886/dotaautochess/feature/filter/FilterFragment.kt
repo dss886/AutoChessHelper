@@ -40,10 +40,10 @@ class FilterFragment : Fragment() {
         for (price in Price.values()) {
             val textView = generateFilterTextView(context)
             textView.setTextColor(ContextCompat.getColor(context, price.colorRes))
-            textView.text = price.description
+            textView.text = price.desc
             textView.setOnClickListener {
                 if (activity is IFilterController) {
-                    (activity as IFilterController).goDetail(IFilterController.DETAIL_TYPE_PRICE, price)
+                    (activity as IFilterController).goDetail(price)
                 }
             }
             mPriceGridLayout?.addView(textView)
@@ -57,7 +57,7 @@ class FilterFragment : Fragment() {
             textView.text = species.desc
             textView.setOnClickListener {
                 if (activity is IFilterController) {
-                    (activity as IFilterController).goDetail(IFilterController.DETAIL_TYPE_SPECIES, species)
+                    (activity as IFilterController).goDetail(species)
                 }
             }
             mSpeciesGridLayout?.addView(textView)
@@ -71,7 +71,7 @@ class FilterFragment : Fragment() {
             textView.text = profession.desc
             textView.setOnClickListener {
                 if (activity is IFilterController) {
-                    (activity as IFilterController).goDetail(IFilterController.DETAIL_TYPE_PROFESSION, profession)
+                    (activity as IFilterController).goDetail(profession)
                 }
             }
             mProfessionGridLayout?.addView(textView)
