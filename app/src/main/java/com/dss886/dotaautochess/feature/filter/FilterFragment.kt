@@ -38,8 +38,7 @@ class FilterFragment : Fragment() {
 
     private fun bindPriceLayout(context: Context) {
         for (price in Price.values()) {
-            val textView = generateFilterTextView(context)
-            textView.setTextColor(ContextCompat.getColor(context, price.colorRes))
+            val textView = generateFilterTextView(context, price.colorRes)
             textView.text = price.desc
             textView.setOnClickListener {
                 if (activity is IFilterController) {
@@ -51,9 +50,12 @@ class FilterFragment : Fragment() {
     }
 
     private fun bindSpeciesLayout(context: Context) {
-        for (species in Species.values()) {
-            val textView = generateFilterTextView(context)
-            textView.setTextColor(ContextCompat.getColor(context, species.colorRes))
+        val speciesList = Species.values().apply {
+                sortByDescending { ContextCompat.getColor(context, it.colorRes)
+            }
+        }
+        for (species in speciesList) {
+            val textView = generateFilterTextView(context, species.colorRes)
             textView.text = species.desc
             textView.setOnClickListener {
                 if (activity is IFilterController) {
@@ -65,9 +67,12 @@ class FilterFragment : Fragment() {
     }
 
     private fun bindProfessionLayout(context: Context) {
-        for (profession in Profession.values()) {
-            val textView = generateFilterTextView(context)
-            textView.setTextColor(ContextCompat.getColor(context, profession.colorRes))
+        val professionList = Profession.values().apply {
+            sortByDescending { ContextCompat.getColor(context, it.colorRes)
+            }
+        }
+        for (profession in professionList) {
+            val textView = generateFilterTextView(context, profession.colorRes)
             textView.text = profession.desc
             textView.setOnClickListener {
                 if (activity is IFilterController) {
@@ -78,12 +83,14 @@ class FilterFragment : Fragment() {
         }
     }
 
-    private fun generateFilterTextView(context: Context): TextView {
+    private fun generateFilterTextView(context: Context, colorRes: Int): TextView {
         val textView = TextView(context)
-        textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15f)
+        textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14f)
         textView.gravity = Gravity.CENTER
         textView.setBackgroundColor(ContextCompat.getColor(context, R.color.white_0a))
-        textView.alpha = 0.87f
+        textView.setTextColor(ContextCompat.getColor(context,colorRes))
+        textView.alpha = 0.9f
         return textView
     }
+
 }

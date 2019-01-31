@@ -20,18 +20,4 @@ class SpeciesOverviewHolder(itemView: View) : AbsOverviewHolder<Species>(itemVie
         UIUtils.updateLayoutMargin(mTitleView, UIUtils.KEEP, (-10).dpInt, UIUtils.KEEP, UIUtils.KEEP)
     }
 
-    override fun isBuffEnable(buffHolder: Species, count: Int): Boolean {
-        return if (buffHolder.buffList.isEmpty()) {
-            false
-        } else count >= buffHolder.buffList[0].count
-    }
-
-    override fun getItemName(buffHolder: Species): String {
-        return buffHolder.desc
-    }
-
-    override fun getItemColorRes(buffHolder: Species): Int {
-        return buffHolder.colorRes
-    }
-
 }

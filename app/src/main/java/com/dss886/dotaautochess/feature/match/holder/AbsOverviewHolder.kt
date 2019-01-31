@@ -7,7 +7,8 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.dss886.dotaautochess.R
-import com.dss886.dotaautochess.utils.Logger
+import com.dss886.dotaautochess.data.IBuffHolder
+import com.dss886.dotaautochess.utils.BuffUtils
 import com.dss886.dotaautochess.utils.UIUtils
 import com.dss886.dotaautochess.widget.TitleView
 import java.util.*
@@ -17,7 +18,7 @@ import java.util.*
  *
  * R.layout.match_item_overview
  */
-abstract class AbsOverviewHolder<BuffHolder> internal constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
+open class AbsOverviewHolder<BuffHolder : IBuffHolder> internal constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     private val mTitleView: TitleView = itemView.findViewById(R.id.title_view)
     private val mNameList = ArrayList<TextView>().apply {
@@ -27,12 +28,6 @@ abstract class AbsOverviewHolder<BuffHolder> internal constructor(itemView: View
             add(itemView.findViewById<View>(id) as TextView)
         }
     }
-
-    internal abstract fun isBuffEnable(buffHolder: BuffHolder, count: Int): Boolean
-
-    internal abstract fun getItemName(buffHolder: BuffHolder): String
-
-    internal abstract fun getItemColorRes(buffHolder: BuffHolder): Int
 
     open fun bind(titleRes: Int, dataList: List<Pair<BuffHolder, Int>>) {
         val context = mTitleView.context
@@ -54,18 +49,17 @@ abstract class AbsOverviewHolder<BuffHolder> internal constructor(itemView: View
             return
         }
         if (count == 1) {
-            textView.text = getItemName(buffHolder)
+            textView.text = buffHolder.desc
         } else {
-            textView.text = context.getString(R.string.match_species_and_profession_count, getItemName(buffHolder), count)
+            textView.text = context.getString(R.string.match_species_and_profession_count, buffHolder.desc, count)
         }
         (textView.background as GradientDrawable).let { drawable ->
-            if (isBuffEnable(buffHolder, count)) {
-                val color = ContextCompat.getColor(context, getItemColorRes(buffHolder))
+            if (BuffUtils.isBuffEnable(buffHolder.buffList, count)) {
+                val color = ContextCompat.getColor(context, buffHolder.colorRes)
                 // avoid color of the text and background is too close
                 val colorBrightness = UIUtils.getColorBrightness(color)
                 val textColor = ContextCompat.getColor(context,
                         if (colorBrightness > 130) R.color.black_bb else R.color.white_bb)
-                Logger.d("AbsOverviewHolder", getItemName(buffHolder) + colorBrightness)
                 drawable.setColor(color)
                 textView.setTextColor(textColor)
                 textView.alpha = 0.7f
