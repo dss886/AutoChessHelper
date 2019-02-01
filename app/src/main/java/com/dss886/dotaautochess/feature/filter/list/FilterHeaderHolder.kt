@@ -21,7 +21,6 @@ class FilterHeaderHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
             is Species -> mTitleView.setText(filterValue.desc)
             is Profession -> mTitleView.setText(filterValue.desc)
         }
-        mTitleView.transitionName = FilterListFragment.TRANSITION_NAME
     }
 
 }

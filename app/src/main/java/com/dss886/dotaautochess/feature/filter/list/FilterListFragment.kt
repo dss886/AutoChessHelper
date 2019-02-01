@@ -12,17 +12,13 @@ import com.dss886.dotaautochess.data.Hero
 import com.dss886.dotaautochess.data.Price
 import com.dss886.dotaautochess.data.Profession
 import com.dss886.dotaautochess.data.Species
+import com.dss886.dotaautochess.utils.Constants
 import java.io.Serializable
 
 /**
  * Created by dss886 on 2019/1/30.
  */
 class FilterListFragment : Fragment() {
-
-    companion object {
-        const val BUNDLE_VALUE = "value"
-        const val TRANSITION_NAME = "share_element_title"
-    }
 
     private var mAdapter: FilterListAdapter? = null
 
@@ -33,11 +29,12 @@ class FilterListFragment : Fragment() {
         recyclerView.recycledViewPool.setMaxRecycledViews(FilterListAdapter.TYPE_HERO, 15)
         mAdapter = FilterListAdapter(view.context)
         recyclerView.adapter = mAdapter
+        updateData()
         return view
     }
 
     fun updateData() {
-        val value = arguments?.getSerializable(BUNDLE_VALUE)
+        val value = arguments?.getSerializable(Constants.BUNDLE_VALUE)
         mAdapter?.updateData(getData(value), value)
     }
 

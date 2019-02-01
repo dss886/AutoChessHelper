@@ -19,8 +19,8 @@ open class BaseHeroViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView
 
     private val mHeroIcon: ImageView = itemView.findViewById(R.id.hero_icon)
     private val mName: TextView = itemView.findViewById(R.id.name)
-    private val mSpecies: TextView = itemView.findViewById(R.id.species)
-    private val mProfession: TextView = itemView.findViewById(R.id.profession)
+    protected val mSpecies: TextView = itemView.findViewById(R.id.species)
+    protected val mProfession: TextView = itemView.findViewById(R.id.profession)
     private val mAbilityIcon: ImageView = itemView.findViewById(R.id.ability_icon)
     private val mCost: TextView = itemView.findViewById(R.id.cost)
 
@@ -40,7 +40,7 @@ open class BaseHeroViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView
         mCost.text = context.getString(R.string.hero_list_cost, hero.price.price)
     }
 
-    private fun buildSpeciesString(hero: Hero): SpannableString? {
+    protected open fun buildSpeciesString(hero: Hero): SpannableString {
         val content = hero.speciesList.joinToString(" ") { it.desc }
         val ss = SpannableString(content)
         var start = 0

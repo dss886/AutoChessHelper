@@ -7,10 +7,12 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.dss886.dotaautochess.R
 import com.dss886.dotaautochess.data.IBuffHolder
+import com.dss886.dotaautochess.feature.filter.FilterActivity
 import com.dss886.dotaautochess.utils.BuffUtils
 import com.dss886.dotaautochess.utils.UIUtils
 import com.dss886.dotaautochess.utils.toColor
 import com.dss886.dotaautochess.widget.TitleView
+import java.io.Serializable
 import java.util.*
 
 /**
@@ -52,6 +54,11 @@ open class AbsOverviewHolder<BuffHolder : IBuffHolder> internal constructor(item
             textView.text = buffHolder.desc
         } else {
             textView.text = context.getString(R.string.match_species_and_profession_count, buffHolder.desc, count)
+        }
+        textView.setOnClickListener {
+            (buffHolder as? Serializable)?.let{
+                FilterActivity.startActivity(context, buffHolder)
+            }
         }
         (textView.background as GradientDrawable).let { drawable ->
             if (BuffUtils.isBuffEnable(buffHolder.buffList, count)) {

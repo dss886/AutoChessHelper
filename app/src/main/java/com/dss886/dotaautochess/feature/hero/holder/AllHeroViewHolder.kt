@@ -4,11 +4,17 @@ import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.animation.ObjectAnimator
 import android.animation.ValueAnimator
+import android.text.SpannableString
+import android.text.Spanned
+import android.text.TextPaint
+import android.text.method.LinkMovementMethod
+import android.text.style.ClickableSpan
 import android.view.View
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.dss886.dotaautochess.R
 import com.dss886.dotaautochess.data.Hero
+import com.dss886.dotaautochess.feature.filter.FilterActivity
 import com.dss886.dotaautochess.feature.hero.IHeroItemCallback
 import com.dss886.dotaautochess.utils.*
 
@@ -34,6 +40,8 @@ class AllHeroViewHolder(itemView: View, private val callback: IHeroItemCallback?
         super.bind(hero, position)
         val context = mTopLayout.context
         mTopLayout.setOnClickListener { callback?.onItemClick(position, hero) }
+        mSpecies.movementMethod = LinkMovementMethod.getInstance()
+        mProfession.setOnClickListener { FilterActivity.startActivity(context, hero.profession) }
 
         mExpandLayout.visibility = if (isExpanded) View.VISIBLE else View.GONE
         mBuffTitle1.text = hero.speciesList[0].buffName
@@ -59,6 +67,21 @@ class AllHeroViewHolder(itemView: View, private val callback: IHeroItemCallback?
         val heightMeasureSpec = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED)
         mExpandLayout.measure(widthMeasureSpec, heightMeasureSpec)
         mExpandViewHeight = mExpandLayout.measuredHeight.toFloat()
+    }
+
+    override fun buildSpeciesString(hero: Hero): SpannableString {
+        val ss = super.buildSpeciesString(hero)
+        var start = 0
+        for (species in hero.speciesList) {
+            ss.setSpan(object : ClickableSpan(){
+                override fun onClick(widget: View) {
+                    FilterActivity.startActivity(widget.context, species)
+                }
+                override fun updateDrawState(ds: TextPaint) {}
+            }, start, start + species.desc.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+            start += species.desc.length + 1
+        }
+        return ss
     }
 
     /**
