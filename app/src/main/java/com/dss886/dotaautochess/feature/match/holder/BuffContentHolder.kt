@@ -13,12 +13,10 @@ import com.dss886.dotaautochess.utils.BuffUtils
 
 /**
  * Created by dss886 on 2019/1/27.
- */
-class BuffContentHolder
-/**
+ *
  * R.layout.match_item_buff_content
  */
-(itemView: View) : RecyclerView.ViewHolder(itemView) {
+class BuffContentHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     private val mTitle: TextView = itemView.findViewById(R.id.buff_title)
     private val mContent: TextView = itemView.findViewById(R.id.buff_content)

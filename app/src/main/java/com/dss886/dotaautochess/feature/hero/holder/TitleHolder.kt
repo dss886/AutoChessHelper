@@ -7,7 +7,7 @@ import com.dss886.dotaautochess.widget.TitleView
 /**
  * Created by dss886 on 2019/1/25.
  */
-class HeroTitleHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+class TitleHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     private val mTitleView: TitleView = itemView as TitleView
 

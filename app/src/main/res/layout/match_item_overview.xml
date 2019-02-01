@@ -17,7 +17,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:background="@color/white_08"
+        android:background="@color/white_0a"
         android:padding="10dp"
         app:lineSpacing="8dp"
         app:itemSpacing="8dp">

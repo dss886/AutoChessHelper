@@ -22,7 +22,7 @@ class HeroPoolView @JvmOverloads constructor(context: Context, attrs: AttributeS
     init {
         for (i in 0..9) {
             val imageView = ImageView(context)
-            imageView.setBackgroundColor(ContextCompat.getColor(context, R.color.white_08))
+            imageView.setBackgroundColor(ContextCompat.getColor(context, R.color.white_0a))
             addView(imageView)
         }
     }

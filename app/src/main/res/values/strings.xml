@@ -2,6 +2,8 @@
     <string name="app_name">自走棋助手</string>
     <string name="app_bar_tip">&#160;新年伊始，下棋风暴，重现江湖&#160;</string>
 
+    <string name="common_dialog_btn_ok">好的</string>
+
     <string name="title_data">资料</string>
     <string name="title_dashboard">搭配</string>
     <string name="title_news">攻略</string>
@@ -19,8 +21,12 @@
     <string name="match_species_and_profession_count">%1$s x %2$d</string>
     <string name="match_empty_view_tip">点击 + 号向阵容中添加英雄后\n这里将会显示阵容分析数据</string>
 
+    <string name="filter_price">按稀有度</string>
     <string name="filter_species">按种族</string>
     <string name="filter_profession">按职业</string>
-    <string name="filter_price">按稀有度</string>
+    <string name="filter_existed">已添加</string>
+    <string name="filter_hero_pool_full">阵容满啦，无法再添加英雄</string>
+
+    <string name="filter_item_count">%1$d / %2$d</string>
 
 </resources>

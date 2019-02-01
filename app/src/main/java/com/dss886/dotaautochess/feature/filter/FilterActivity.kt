@@ -7,18 +7,17 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.dss886.dotaautochess.R
 import com.dss886.dotaautochess.feature.filter.list.FilterListFragment
-import com.dss886.dotaautochess.feature.match.manager.MatchChangeListener
-import com.dss886.dotaautochess.feature.match.manager.MatchManager
 import java.io.Serializable
 
 /**
  * Created by dss886 on 2019/1/29.
  */
-class FilterActivity : AppCompatActivity(), IFilterController, MatchChangeListener {
+class FilterActivity : AppCompatActivity(), IFilterController {
 
     private val mFragmentManager = supportFragmentManager
     private val mFilterFragment = FilterFragment()
     private val mDetailFragment = FilterListFragment()
+    private var mLastGoDetailTime = 0L
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,13 +32,6 @@ class FilterActivity : AppCompatActivity(), IFilterController, MatchChangeListen
                 .hide(mDetailFragment)
                 .add(R.id.main_container, mFilterFragment)
                 .commit()
-
-        MatchManager.registerChangeListener(this)
-    }
-
-    override fun onDestroy() {
-        MatchManager.unregisterChangeListener(this)
-        super.onDestroy()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -56,6 +48,12 @@ class FilterActivity : AppCompatActivity(), IFilterController, MatchChangeListen
     }
 
     override fun goDetail(data: Serializable) {
+        val now = System.currentTimeMillis()
+        if (now - mLastGoDetailTime <= 300L) {
+            return
+        }
+        mLastGoDetailTime = now
+
         mDetailFragment.arguments = Bundle().apply {
             putSerializable(FilterListFragment.BUNDLE_VALUE, data)
         }
@@ -71,14 +69,6 @@ class FilterActivity : AppCompatActivity(), IFilterController, MatchChangeListen
                 .show(mDetailFragment)
                 .addToBackStack(null)
                 .commit()
-    }
-
-    override fun tryToAddHero() {
-
-    }
-
-    override fun onHeroesChanged() {
-
     }
 
 }

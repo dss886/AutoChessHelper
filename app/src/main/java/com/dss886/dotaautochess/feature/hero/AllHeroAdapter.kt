@@ -5,10 +5,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.dss886.dotaautochess.R
 import com.dss886.dotaautochess.data.Hero
-import com.dss886.dotaautochess.feature.hero.holder.BaseHeroViewHolder
-import com.dss886.dotaautochess.feature.hero.holder.DataHeroViewHolder
+import com.dss886.dotaautochess.feature.hero.holder.AllHeroViewHolder
 import com.dss886.dotaautochess.feature.hero.holder.HeroCountHolder
-import com.dss886.dotaautochess.feature.hero.holder.HeroTitleHolder
+import com.dss886.dotaautochess.feature.hero.holder.TitleHolder
+import com.dss886.dotaautochess.utils.DataWrapper
 import java.util.*
 
 /**
@@ -26,13 +26,6 @@ class AllHeroAdapter internal constructor() : RecyclerView.Adapter<RecyclerView.
     private val mDataList = ArrayList<DataWrapper>()
     private var mCurrentExpandedPosition = -1
     private var mLastExpandCollapseTime = 0L
-
-    private class DataWrapper internal constructor(internal var type: Int, internal var data: Any) {
-        internal fun <T> get(): T {
-            @Suppress("UNCHECKED_CAST")
-            return data as T
-        }
-    }
 
     init {
         var currentLevel = 0
@@ -54,18 +47,18 @@ class AllHeroAdapter internal constructor() : RecyclerView.Adapter<RecyclerView.
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         return when (viewType) {
-            TYPE_HEADER -> HeroTitleHolder(inflater.inflate(R.layout.hero_item_header, parent, false))
+            TYPE_HEADER -> TitleHolder(inflater.inflate(R.layout.hero_item_header, parent, false))
             TYPE_FOOTER -> HeroCountHolder(inflater.inflate(R.layout.hero_item_footer, parent, false))
-            else -> DataHeroViewHolder(inflater.inflate(R.layout.hero_item_hero, parent, false), this)
+            else -> AllHeroViewHolder(inflater.inflate(R.layout.hero_item_all_list, parent, false), this)
         }
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val data = mDataList[position]
         when (holder) {
-            is HeroTitleHolder -> holder.bind(data.get())
+            is TitleHolder -> holder.bind(data.get())
             is HeroCountHolder -> holder.bind(data.get())
-            is DataHeroViewHolder -> holder.bind(data.get(), position, mCurrentExpandedPosition == position)
+            is AllHeroViewHolder -> holder.bind(data.get(), position, mCurrentExpandedPosition == position)
         }
     }
 
@@ -94,13 +87,13 @@ class AllHeroAdapter internal constructor() : RecyclerView.Adapter<RecyclerView.
 
         val isExpand = mCurrentExpandedPosition != position
         if (isExpand && mCurrentExpandedPosition >= 0) {
-            val holder = mRecyclerView!!.findViewHolderForAdapterPosition(mCurrentExpandedPosition)
-            if (holder is BaseHeroViewHolder) {
+            val holder = mRecyclerView?.findViewHolderForAdapterPosition(mCurrentExpandedPosition)
+            if (holder is AllHeroViewHolder) {
                 holder.doExpandOrCollapse(false)
             }
         }
-        val holder = mRecyclerView!!.findViewHolderForAdapterPosition(position)
-        if (holder is BaseHeroViewHolder) {
+        val holder = mRecyclerView?.findViewHolderForAdapterPosition(position)
+        if (holder is AllHeroViewHolder) {
             holder.doExpandOrCollapse(isExpand)
         }
         mCurrentExpandedPosition = if (isExpand) position else -1

@@ -9,6 +9,4 @@ interface IFilterController {
 
     fun goDetail(data: Serializable)
 
-    fun tryToAddHero()
-
 }

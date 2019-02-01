@@ -6,8 +6,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.dss886.dotaautochess.R
 import com.dss886.dotaautochess.data.Hero
-import com.dss886.dotaautochess.feature.filter.IFilterController
-import com.dss886.dotaautochess.feature.hero.IHeroItemCallback
 import com.dss886.dotaautochess.feature.hero.holder.BaseHeroViewHolder
 import com.dss886.dotaautochess.feature.hero.holder.HeroCountHolder
 import java.io.Serializable
@@ -15,7 +13,7 @@ import java.io.Serializable
 /**
  * Created by dss886 on 2019/1/30.
  */
-class FilterListAdapter(val context: Context) : RecyclerView.Adapter<RecyclerView.ViewHolder>(), IHeroItemCallback {
+class FilterListAdapter(val context: Context) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     companion object {
         private const val TYPE_HEADER = 1000
@@ -37,7 +35,7 @@ class FilterListAdapter(val context: Context) : RecyclerView.Adapter<RecyclerVie
         return when (viewType) {
             TYPE_HEADER -> FilterHeaderHolder(inflater.inflate(R.layout.hero_item_header, parent, false))
             TYPE_FOOTER -> HeroCountHolder(inflater.inflate(R.layout.hero_item_footer, parent, false))
-            else -> FilterHeroViewHolder(inflater.inflate(R.layout.hero_item_hero, parent, false), this)
+            else -> FilterHeroViewHolder(inflater.inflate(R.layout.hero_item_filter_list, parent, false))
         }
     }
 
@@ -57,12 +55,8 @@ class FilterListAdapter(val context: Context) : RecyclerView.Adapter<RecyclerVie
         when (holder) {
             is FilterHeaderHolder -> holder.bind(mFilterValue)
             is HeroCountHolder -> holder.bind(mHeroList.size)
-            is BaseHeroViewHolder -> holder.bind(mHeroList[position - 1], position, false)
+            is BaseHeroViewHolder -> holder.bind(mHeroList[position - 1], position)
         }
-    }
-
-    override fun onItemClick(position: Int, hero: Hero) {
-        (context as? IFilterController)?.tryToAddHero()
     }
 
 }
