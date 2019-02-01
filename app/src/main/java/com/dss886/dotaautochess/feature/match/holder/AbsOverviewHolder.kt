@@ -4,12 +4,12 @@ import android.content.Context
 import android.graphics.drawable.GradientDrawable
 import android.view.View
 import android.widget.TextView
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.dss886.dotaautochess.R
 import com.dss886.dotaautochess.data.IBuffHolder
 import com.dss886.dotaautochess.utils.BuffUtils
 import com.dss886.dotaautochess.utils.UIUtils
+import com.dss886.dotaautochess.utils.toColor
 import com.dss886.dotaautochess.widget.TitleView
 import java.util.*
 
@@ -55,18 +55,17 @@ open class AbsOverviewHolder<BuffHolder : IBuffHolder> internal constructor(item
         }
         (textView.background as GradientDrawable).let { drawable ->
             if (BuffUtils.isBuffEnable(buffHolder.buffList, count)) {
-                val color = ContextCompat.getColor(context, buffHolder.colorRes)
+                val color = buffHolder.colorRes.toColor()
                 // avoid color of the text and background is too close
                 val colorBrightness = UIUtils.getColorBrightness(color)
-                val textColor = ContextCompat.getColor(context,
-                        if (colorBrightness > 130) R.color.black_bb else R.color.white_bb)
+                val textColor = (if (colorBrightness > 130) R.color.black_bb else R.color.white_bb).toColor()
                 drawable.setColor(color)
                 textView.setTextColor(textColor)
                 textView.alpha = 0.7f
             } else {
                 textView.alpha = 1f
-                textView.setTextColor(ContextCompat.getColor(context, R.color.white_66))
-                drawable.setColor(ContextCompat.getColor(context, R.color.white_0a))
+                textView.setTextColor(R.color.white_66.toColor())
+                drawable.setColor(R.color.white_0a.toColor())
             }
             textView.background.invalidateSelf()
         }

@@ -46,10 +46,28 @@
 
         </LinearLayout>
 
-        <com.dss886.dotaautochess.widget.TitleView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/list_title_height_big"
-            android:text="@string/match_hero_pool_title"/>
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <com.dss886.dotaautochess.widget.TitleView
+                android:layout_width="0dp"
+                android:layout_height="@dimen/list_title_height_big"
+                android:layout_weight="1"
+                android:text="@string/match_hero_pool_title"/>
+
+            <ImageView
+                android:id="@+id/delete"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/ic_delete"
+                android:background="?android:selectableItemBackgroundBorderless"
+                android:padding="6dp"
+                android:layout_marginEnd="12dp"/>
+
+        </LinearLayout>
 
         <com.dss886.dotaautochess.feature.match.pool.HeroPoolView
             android:id="@+id/hero_pool"

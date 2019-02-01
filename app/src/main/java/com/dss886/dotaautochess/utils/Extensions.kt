@@ -1,6 +1,7 @@
 package com.dss886.dotaautochess.utils
 
 import android.widget.ImageView
+import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.dss886.dotaautochess.app.BaseApplication
@@ -20,4 +21,8 @@ fun ImageView.loadImage(resourceId: Int) {
             .load(resourceId)
             .transition(DrawableTransitionOptions.withCrossFade())
             .into(this)
+}
+
+fun Int.toColor(): Int {
+    return ContextCompat.getColor(BaseApplication.inst, this)
 }

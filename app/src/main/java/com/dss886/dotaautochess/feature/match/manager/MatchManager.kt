@@ -33,9 +33,9 @@ object MatchManager {
                 .sortedWith(BuffComparator())
 
     init {
-//        for (i in 0..7) {
-//            mHeroList.add(Hero.values()[i])
-//        }
+        for (i in 0..7) {
+            mHeroList.add(Hero.values()[i])
+        }
     }
 
     fun registerChangeListener(listener: MatchChangeListener) {
@@ -67,6 +67,11 @@ object MatchManager {
 
     fun removeHero(hero: Hero) {
         mHeroList.remove(hero)
+        notifyListeners()
+    }
+
+    fun clearAllHero() {
+        mHeroList.clear()
         notifyListeners()
     }
 

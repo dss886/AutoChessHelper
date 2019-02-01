@@ -1,10 +1,10 @@
 package com.dss886.dotaautochess.feature.filter.holder
 
 import android.view.View
-import androidx.core.content.ContextCompat
 import com.dss886.dotaautochess.data.Hero
 import com.dss886.dotaautochess.data.Profession
 import com.dss886.dotaautochess.feature.filter.IFilterController
+import com.dss886.dotaautochess.utils.toColor
 
 /**
  * Created by dss886 on 2019/1/25.
@@ -18,7 +18,7 @@ open class FilterProfessionViewHolder(itemView: View) : BaseFilterViewHolder<Pro
     override fun bind(data: Profession, showDivider: Boolean) {
         super.bind(data, showDivider)
         mDesc.text = data.desc
-        mDesc.setTextColor(ContextCompat.getColor(itemView.context, data.colorRes))
+        mDesc.setTextColor(data.colorRes.toColor())
         itemView.setOnClickListener {
             (itemView.context as? IFilterController)?.goDetail(data)
         }

@@ -1,17 +1,16 @@
 package com.dss886.dotaautochess.feature.hero.holder
 
-import android.content.Context
 import android.text.SpannableString
 import android.text.Spanned
 import android.text.style.ForegroundColorSpan
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.dss886.dotaautochess.R
 import com.dss886.dotaautochess.data.Hero
 import com.dss886.dotaautochess.utils.loadImage
+import com.dss886.dotaautochess.utils.toColor
 
 /**
  * Created by dss886 on 2019/1/25.
@@ -32,22 +31,21 @@ open class BaseHeroViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView
         val context = mHeroIcon.context
         mHeroIcon.loadImage(hero.iconRes)
         mName.text = String.format("%s★", hero.desc)
-        mName.setTextColor(ContextCompat.getColor(context, hero.price.colorRes))
-        mSpecies.text = buildSpeciesString(context, hero)
-        mSpecies.setTextColor(ContextCompat.getColor(context, hero.speciesList[0].colorRes))
+        mName.setTextColor(hero.price.colorRes.toColor())
+        mSpecies.text = buildSpeciesString(hero)
+        mSpecies.setTextColor(hero.speciesList[0].colorRes.toColor())
         mProfession.text = hero.profession.desc
-        mProfession.setTextColor(ContextCompat.getColor(context, hero.profession.colorRes))
+        mProfession.setTextColor(hero.profession.colorRes.toColor())
         mAbilityIcon.loadImage(hero.ability.iconRes)
         mCost.text = context.getString(R.string.hero_list_cost, hero.price.price)
     }
 
-    private fun buildSpeciesString(context: Context, hero: Hero): SpannableString? {
+    private fun buildSpeciesString(hero: Hero): SpannableString? {
         val content = hero.speciesList.joinToString(" ") { it.desc }
         val ss = SpannableString(content)
         var start = 0
         for (species in hero.speciesList) {
-            val color = ContextCompat.getColor(context, species.colorRes)
-            ss.setSpan(ForegroundColorSpan(color), start,
+            ss.setSpan(ForegroundColorSpan(species.colorRes.toColor()), start,
                     start + species.desc.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
             start += species.desc.length + 1
         }

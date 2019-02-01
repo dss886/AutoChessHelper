@@ -6,15 +6,11 @@ import android.animation.ObjectAnimator
 import android.animation.ValueAnimator
 import android.view.View
 import android.widget.TextView
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.dss886.dotaautochess.R
 import com.dss886.dotaautochess.data.Hero
 import com.dss886.dotaautochess.feature.hero.IHeroItemCallback
-import com.dss886.dotaautochess.utils.BuffUtils
-import com.dss886.dotaautochess.utils.RecyclerViewUtils
-import com.dss886.dotaautochess.utils.UIUtils
-import com.dss886.dotaautochess.utils.dpInt
+import com.dss886.dotaautochess.utils.*
 
 /**
  * Created by dss886 on 2019/1/25.
@@ -41,14 +37,14 @@ class AllHeroViewHolder(itemView: View, private val callback: IHeroItemCallback?
 
         mExpandLayout.visibility = if (isExpanded) View.VISIBLE else View.GONE
         mBuffTitle1.text = hero.speciesList[0].buffName
-        mBuffTitle1.setTextColor(ContextCompat.getColor(context, hero.speciesList[0].colorRes))
+        mBuffTitle1.setTextColor(hero.speciesList[0].colorRes.toColor())
         mBuffContent1.text = BuffUtils.getBuffDescription(context, hero.speciesList[0])
         if (hero.speciesList.size > 1) {
             mBuffTitle2.visibility = View.VISIBLE
             mBuffContent2.visibility = View.VISIBLE
             mDivider2.visibility = View.VISIBLE
             mBuffTitle2.text = hero.speciesList[1].buffName
-            mBuffTitle2.setTextColor(ContextCompat.getColor(context, hero.speciesList[1].colorRes))
+            mBuffTitle2.setTextColor(hero.speciesList[1].colorRes.toColor())
             mBuffContent2.text = BuffUtils.getBuffDescription(context, hero.speciesList[1])
         } else {
             mBuffTitle2.visibility = View.GONE
@@ -56,7 +52,7 @@ class AllHeroViewHolder(itemView: View, private val callback: IHeroItemCallback?
             mDivider2.visibility = View.GONE
         }
         mBuffTitle3.text = hero.profession.buffName
-        mBuffTitle3.setTextColor(ContextCompat.getColor(context, hero.profession.colorRes))
+        mBuffTitle3.setTextColor(hero.profession.colorRes.toColor())
         mBuffContent3.text = BuffUtils.getBuffDescription(context, hero.profession)
         // Measure the mExpandLayout to get height before rendering
         val widthMeasureSpec = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED)

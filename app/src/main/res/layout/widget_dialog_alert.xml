@@ -25,13 +25,13 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
-        android:background="@color/white_66"
+        android:background="@color/white_22"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="54dp">
+        android:layout_height="56dp">
 
         <TextView
             android:id="@+id/cancel"
@@ -51,7 +51,7 @@
             android:background="?android:selectableItemBackground"
             android:gravity="center"
             android:layout_weight="1"
-            android:textColor="@color/white_bb"
+            android:textColor="@color/color_accent"
             android:textSize="15sp"
             tools:text="Accept"/>
 
