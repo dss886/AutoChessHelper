@@ -47,6 +47,7 @@ class AllHeroViewHolder(itemView: View, private val callback: IHeroItemCallback?
         mBuffTitle1.text = hero.speciesList[0].buffName
         mBuffTitle1.setTextColor(hero.speciesList[0].colorRes.toColor())
         mBuffContent1.text = BuffUtils.getBuffDescription(context, hero.speciesList[0])
+        mBuffContent1.setOnClickListener { FilterActivity.startActivity(context, hero.speciesList[0]) }
         if (hero.speciesList.size > 1) {
             mBuffTitle2.visibility = View.VISIBLE
             mBuffContent2.visibility = View.VISIBLE
@@ -54,6 +55,7 @@ class AllHeroViewHolder(itemView: View, private val callback: IHeroItemCallback?
             mBuffTitle2.text = hero.speciesList[1].buffName
             mBuffTitle2.setTextColor(hero.speciesList[1].colorRes.toColor())
             mBuffContent2.text = BuffUtils.getBuffDescription(context, hero.speciesList[1])
+            mBuffContent2.setOnClickListener { FilterActivity.startActivity(context, hero.speciesList[1]) }
         } else {
             mBuffTitle2.visibility = View.GONE
             mBuffContent2.visibility = View.GONE
@@ -62,6 +64,7 @@ class AllHeroViewHolder(itemView: View, private val callback: IHeroItemCallback?
         mBuffTitle3.text = hero.profession.buffName
         mBuffTitle3.setTextColor(hero.profession.colorRes.toColor())
         mBuffContent3.text = BuffUtils.getBuffDescription(context, hero.profession)
+        mBuffContent3.setOnClickListener { FilterActivity.startActivity(context, hero.profession) }
         // Measure the mExpandLayout to get height before rendering
         val widthMeasureSpec = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED)
         val heightMeasureSpec = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED)

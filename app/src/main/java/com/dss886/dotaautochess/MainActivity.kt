@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.dss886.dotaautochess.feature.hero.AllHeroFragment
 import com.dss886.dotaautochess.feature.match.MatchFragment
+import com.dss886.dotaautochess.feature.news.NewsFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
