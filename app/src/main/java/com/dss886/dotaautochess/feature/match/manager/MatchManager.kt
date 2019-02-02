@@ -1,5 +1,7 @@
 package com.dss886.dotaautochess.feature.match.manager
 
+import android.content.Context
+import com.dss886.dotaautochess.app.App
 import com.dss886.dotaautochess.data.Hero
 import com.dss886.dotaautochess.data.Profession
 import com.dss886.dotaautochess.data.Species
@@ -10,6 +12,8 @@ import java.util.*
  */
 object MatchManager {
 
+    private const val KEY_NAME = "hero"
+    private val mSp = App.inst.getSharedPreferences("match", Context.MODE_PRIVATE)
     private val mHeroList = ArrayList<Hero>()
     private val mChangeListeners = ArrayList<MatchChangeListener>()
 
@@ -33,9 +37,7 @@ object MatchManager {
                 .sortedWith(BuffComparator())
 
     init {
-        for (i in 0..7) {
-            mHeroList.add(Hero.values()[i])
-        }
+        readData()
     }
 
     fun registerChangeListener(listener: MatchChangeListener) {
@@ -56,6 +58,7 @@ object MatchManager {
         if (!mHeroList.contains(hero) && mHeroList.size < 10) {
             mHeroList.add(hero)
             notifyListeners()
+            saveData()
             return true
         }
         return false
@@ -68,11 +71,27 @@ object MatchManager {
     fun removeHero(hero: Hero) {
         mHeroList.remove(hero)
         notifyListeners()
+        saveData()
     }
 
     fun clearAllHero() {
         mHeroList.clear()
         notifyListeners()
+        saveData()
+    }
+
+    private fun saveData() {
+        val string = mHeroList.joinToString(",") { it.desc }
+        mSp.edit().putString(KEY_NAME, string).apply()
+    }
+
+    private fun readData() {
+        mSp.getString(KEY_NAME, "")
+                ?.split(",")
+                ?.forEach { desc ->
+                    Hero.values().find { it.desc == desc }
+                            ?.apply { mHeroList.add(this) }
+                }
     }
 
 }

@@ -5,7 +5,8 @@ import com.dss886.dotaautochess.R
 /**
  * Created by dss886 on 2019/1/25.
  */
-enum class Hero constructor(var desc: String, var price: Price, var speciesList: List<Species>, var profession: Profession, var ability: Ability, var iconRes: Int) {
+enum class Hero constructor(var desc: String, var price: Price, var speciesList: List<Species>,
+                            var profession: Profession, var ability: Ability, var iconRes: Int) {
 
     Axe("斧王", Price.GOLD_1, listOf(Species.Orc), Profession.Warrior, Ability.BerserkersCall, R.mipmap.hero_axe_icon),
     Enchantress("魅惑魔女", Price.GOLD_1, listOf(Species.Beast), Profession.Druid, Ability.NaturesAttendants, R.mipmap.hero_enchantress_icon),

@@ -4,7 +4,7 @@ import android.widget.ImageView
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
-import com.dss886.dotaautochess.app.BaseApplication
+import com.dss886.dotaautochess.app.App
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -14,7 +14,7 @@ import java.util.*
  */
 
 inline val Int.dp: Float
-    get() = (BaseApplication.inst.resources.displayMetrics.density * this) + 0.5f
+    get() = (App.inst.resources.displayMetrics.density * this) + 0.5f
 
 inline val Int.dpInt: Int
     get() = this.dp.toInt()
@@ -35,7 +35,7 @@ fun ImageView.loadImage(url : String?) {
 }
 
 fun Int.toColor(): Int {
-    return ContextCompat.getColor(BaseApplication.inst, this)
+    return ContextCompat.getColor(App.inst, this)
 }
 
 fun Long.toFullTime(): String {

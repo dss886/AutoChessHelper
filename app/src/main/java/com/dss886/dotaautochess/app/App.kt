@@ -5,10 +5,10 @@ import android.content.Context
 /**
  * Created by dss886 on 2019/1/30.
  */
-open class BaseApplication : android.app.Application() {
+open class App : android.app.Application() {
 
     companion object {
-        lateinit var inst: BaseApplication protected set
+        lateinit var inst: App protected set
     }
 
     override fun attachBaseContext(base: Context) {
