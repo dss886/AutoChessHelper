@@ -1,5 +1,6 @@
 package com.dss886.dotaautochess.feature.news
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.dss886.dotaautochess.R
+import com.dss886.dotaautochess.feature.setting.SettingsActivity
 import com.dss886.dotaautochess.network.Api
 import com.dss886.dotaautochess.network.data.Timeline
 import com.dss886.dotaautochess.utils.Constants
@@ -45,6 +47,15 @@ class NewsFragment : Fragment() {
                     tryToPreLoad(recyclerView)
                 }
             })
+        }
+
+        view.findViewById<View>(R.id.toolbar).setOnClickListener{
+            mRecyclerView?.smoothScrollToPosition(0)
+        }
+
+
+        view.findViewById<View>(R.id.settings).setOnClickListener{
+            context?.startActivity(Intent(context, SettingsActivity::class.java))
         }
 
         view.findViewById<SwipeRefreshLayout>(R.id.refresh).apply {
