@@ -105,7 +105,7 @@ class NewsDetailActivity: AppCompatActivity() {
                         text = article.userName
                     }
                     findViewById<TextView>(R.id.create_time).apply {
-                        text = article.createTime.toShowTime()
+                        text = article.createTime.toFullTime()
                     }
                 }
         mContainer?.addView(view, LinearLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT).apply {

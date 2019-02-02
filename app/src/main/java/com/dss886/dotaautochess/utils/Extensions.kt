@@ -38,7 +38,12 @@ fun Int.toColor(): Int {
     return ContextCompat.getColor(BaseApplication.inst, this)
 }
 
-fun Long.toShowTime(): String {
+fun Long.toFullTime(): String {
+    val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINA)
+    return sdf.format(Date(this * 1000))
+}
+
+fun Long.toShortTime(): String {
     val calendar = Calendar.getInstance()
     val nowTime = (calendar.time.time / 1000)
     val t = nowTime - this
@@ -46,8 +51,8 @@ fun Long.toShowTime(): String {
     val minute = calendar.get(Calendar.MINUTE)
     val second = calendar.get(Calendar.SECOND)
     val s = (hour * 60 + minute) * 60 + second
-    val df = SimpleDateFormat("HH:mm", Locale.US)
-    val df2 = SimpleDateFormat("MM月dd日", Locale.US)
+    val df = SimpleDateFormat("HH:mm", Locale.CHINA)
+    val df2 = SimpleDateFormat("MM月dd日", Locale.CHINA)
     return when {
         t < 15 -> "刚刚"
         t < 60 -> "$t 秒前"

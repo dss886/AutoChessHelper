@@ -12,7 +12,7 @@ import com.dss886.dotaautochess.feature.news.detail.NewsDetailActivity
 import com.dss886.dotaautochess.network.data.Feed
 import com.dss886.dotaautochess.utils.UIUtils
 import com.dss886.dotaautochess.utils.loadImage
-import com.dss886.dotaautochess.utils.toShowTime
+import com.dss886.dotaautochess.utils.toShortTime
 
 /**
  * Created by dss886 on 2019/2/2.
@@ -49,7 +49,7 @@ class NewsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         }
         mUserAvatar.loadImage(feed.userAvatarUrl)
         mUserName.text = feed.userName
-        mCreateTime.text = feed.createTime.toShowTime()
+        mCreateTime.text = feed.createTime.toShortTime()
         mReplyCount.text = feed.replyCount.toString()
         itemView.setOnClickListener {
             NewsDetailActivity.startActivity(itemView.context, feed.title, feed.id)
