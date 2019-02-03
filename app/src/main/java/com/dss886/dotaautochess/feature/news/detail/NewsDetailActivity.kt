@@ -60,7 +60,7 @@ class NewsDetailActivity: AppCompatActivity() {
             return
         }
 
-        Api.get(Constants.URL_FEEDBACK + id, success = { response ->
+        Api.get(Constants.HOST_NEWS_DETAIL + id, success = { response ->
             doAsync {
                 val article = Article()
                 article.parseData(response.body()?.string())
