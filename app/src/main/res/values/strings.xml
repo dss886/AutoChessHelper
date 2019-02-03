@@ -3,16 +3,19 @@
     <string name="app_bar_tip">&#160;新年伊始，下棋风暴，重现江湖&#160;</string>
 
     <string name="common_dialog_btn_ok">好的</string>
-    <string name="common_dialog_btn_cancel">取消</string>
     <string name="common_dialog_btn_confirm">确定</string>
+    <string name="common_dialog_btn_cancel">取消</string>
     <string name="common_dialog_btn_remove">移除</string>
     <string name="common_dialog_btn_clear">清空</string>
+    <string name="common_network_error">请求失败，请检查网络</string>
+    <string name="common_loading">加载中…</string>
 
     <string name="title_data">资料</string>
     <string name="title_dashboard">搭配</string>
-    <string name="title_news">攻略</string>
+    <string name="title_news">资讯</string>
     <string name="title_filter">添加英雄</string>
     <string name="title_news_detail">阅读文章</string>
+    <string name="title_settings">设置</string>
 
     <string name="hero_list_footer">共计 %1$d 位英雄</string>
     <string name="hero_list_cost">x %1$d</string>
@@ -36,5 +39,22 @@
     <string name="filter_item_count">%1$d / %2$d</string>
 
     <string name="news_no_more">暂无更多文章</string>
+
+    <string name="settings_author">by dss886</string>
+    <string name="settings_feedback">反馈问题</string>
+    <string name="settings_open_source">许可信息</string>
+    <string name="settings_check_upgrade">检查更新</string>
+
+    <string name="settings_open_source_license_apache">Apache License 2.0</string>
+    <string name="settings_open_source_copyright_valve">©Copyright Valve Corporation</string>
+    <string name="settings_open_source_image_name">图像资源</string>
+    <string name="settings_open_source_image_link">https://dota2.gamepedia.com/Dota_2_Wiki</string>
+    <string name="settings_open_source_okhttp_name">OkHttp</string>
+    <string name="settings_open_source_okhttp_link">https://square.github.io/okhttp/</string>
+    <string name="settings_open_source_anko_name">Anko</string>
+    <string name="settings_open_source_anko_link">https://github.com/Kotlin/anko</string>
+
+    <string name="settings_update_tip">新版本「%1$s」已经发布，是否前往升级？</string>
+    <string name="settings_update_has_no_new">当前已是最新版本</string>
 
 </resources>

@@ -1,10 +1,12 @@
 package com.dss886.dotaautochess.widget
 
 import android.content.Context
+import android.content.Intent
 import android.util.AttributeSet
 import android.view.View
 import android.widget.RelativeLayout
 import com.dss886.dotaautochess.R
+import com.dss886.dotaautochess.feature.setting.SettingsActivity
 import com.dss886.dotaautochess.utils.UIUtils
 
 /**
@@ -15,6 +17,7 @@ class AppHeaderView @JvmOverloads constructor(context: Context, attrs: Attribute
     private var mLogo: View
     private var mTitle: View
     private var mTips: View
+    private var mSettings: View
 
     private var mScreenWidth: Float = 0F
     private var mToolbarHeight: Float = 0F
@@ -36,6 +39,7 @@ class AppHeaderView @JvmOverloads constructor(context: Context, attrs: Attribute
         mLogo = findViewById(R.id.logo)
         mTitle = findViewById(R.id.title)
         mTips = findViewById(R.id.tips)
+        mSettings = findViewById(R.id.settings)
         mTitle.pivotY = 0f
 
         val res = context.resources
@@ -50,6 +54,10 @@ class AppHeaderView @JvmOverloads constructor(context: Context, attrs: Attribute
         mTitleMarginTopExpanded = res.getDimension(R.dimen.hero_header_title_margin_top_expanded)
         mTitleMarginStartCollapsed = res.getDimension(R.dimen.hero_header_title_margin_start_collapsed)
         mTipsMarginTopExpanded = res.getDimension(R.dimen.hero_header_tips_margin_top_expanded)
+
+        mSettings.setOnClickListener {
+            context.startActivity(Intent(context, SettingsActivity::class.java))
+        }
     }
 
     /**

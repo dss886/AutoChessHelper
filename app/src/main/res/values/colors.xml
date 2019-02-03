@@ -4,7 +4,6 @@
     <color name="color_primary">#33333C</color>
     <color name="color_accent">#53B683</color>
 
-    <color name="white">#FFFFFF</color>
     <color name="white_0a">#0AFFFFFF</color>
     <color name="white_22">#22FFFFFF</color>
     <color name="white_44">#44FFFFFF</color>
@@ -13,7 +12,6 @@
     <color name="white_a0">#A0FFFFFF</color>
     <color name="white_bb">#BBFFFFFF</color>
 
-    <color name="black">#000000</color>
     <color name="black_bb">#88000000</color>
 
     <!-- Palette Color is Used for Text Color -->

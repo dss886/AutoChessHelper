@@ -1,12 +1,15 @@
 package com.dss886.dotaautochess
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.dss886.dotaautochess.feature.hero.AllHeroFragment
 import com.dss886.dotaautochess.feature.match.MatchFragment
 import com.dss886.dotaautochess.feature.news.NewsFragment
+import com.dss886.dotaautochess.feature.setting.UpdateManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import java.lang.ref.WeakReference
 
 class MainActivity : AppCompatActivity() {
 
@@ -51,6 +54,14 @@ class MainActivity : AppCompatActivity() {
                 .add(R.id.main_container, mHeroFragment, TAG_FRAGMENT_HERO)
                 .commit()
         mActiveFragment = mHeroFragment
+        UpdateManager.checkAppUpdate(WeakReference(this))
+    }
+
+    override fun onBackPressed() {
+        startActivity(Intent(Intent.ACTION_MAIN).apply {
+            flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            addCategory(Intent.CATEGORY_HOME)
+        })
     }
 
     private fun switchFragment(fragment: Fragment): Boolean {

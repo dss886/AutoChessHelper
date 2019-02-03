@@ -37,6 +37,11 @@
             android:screenOrientation="portrait"
             android:saveEnabled="false"
             android:label="@string/title_news_detail"/>
+        <activity
+            android:name=".feature.setting.SettingsActivity"
+            android:screenOrientation="portrait"
+            android:saveEnabled="false"
+            android:label="@string/title_settings"/>
     </application>
 
 </manifest>

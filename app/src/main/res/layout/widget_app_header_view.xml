@@ -36,9 +36,11 @@
         android:layout_marginTop="@dimen/hero_header_tips_margin_top_expanded"/>
 
     <ImageView
+        android:id="@+id/settings"
         android:layout_width="@dimen/toolbar_height"
         android:layout_height="@dimen/toolbar_height"
         android:layout_gravity="end"
+        android:background="?android:selectableItemBackground"
         android:layout_alignParentEnd="true"
         android:padding="17dp"
         android:src="@drawable/ic_settings"/>

@@ -1,5 +1,7 @@
 package com.dss886.dotaautochess.network
 
+import android.os.Handler
+import android.os.Looper
 import com.dss886.dotaautochess.utils.Logger
 import okhttp3.*
 import java.io.IOException
@@ -9,6 +11,7 @@ import java.io.IOException
  */
 object Api {
 
+    private val mHandler = Handler(Looper.getMainLooper())
     private val client = OkHttpClient()
 
     fun get(url: String, success : (response: Response) -> Unit, failure: (() -> Unit)? = null) {
@@ -19,7 +22,8 @@ object Api {
         Api.client.newCall(request)
                 .enqueue(object : Callback {
                     override fun onFailure(call: Call, e: IOException) {
-                        failure?.invoke()
+                        // Why it is in workerThread here???
+                        mHandler.post { failure?.invoke() }
                     }
                     override fun onResponse(call: Call, response: Response) {
                         success.invoke(response)
