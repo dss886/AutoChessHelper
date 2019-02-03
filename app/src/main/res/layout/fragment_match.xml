@@ -38,11 +38,11 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"/>
 
-            <ImageView
-                android:layout_width="@dimen/toolbar_height"
-                android:layout_height="@dimen/toolbar_height"
-                android:padding="17dp"
-                android:src="@drawable/ic_share"/>
+            <!--<ImageView-->
+                <!--android:layout_width="@dimen/toolbar_height"-->
+                <!--android:layout_height="@dimen/toolbar_height"-->
+                <!--android:padding="17dp"-->
+                <!--android:src="@drawable/ic_share"/>-->
 
         </LinearLayout>
 
