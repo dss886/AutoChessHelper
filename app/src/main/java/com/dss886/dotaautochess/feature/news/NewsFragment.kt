@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -31,6 +32,7 @@ class NewsFragment : Fragment() {
     private var mSwipeRefreshLayout: SwipeRefreshLayout? = null
     private var mRecyclerView: RecyclerView? = null
     private var mAdapter: NewsAdapter? = null
+    private var mEmptyView: View? = null
 
     private var mIsLoading = false
     private var mHasMore = true
@@ -49,10 +51,11 @@ class NewsFragment : Fragment() {
             })
         }
 
+        view.findViewById<View>(R.id.empty_view).apply { mEmptyView = this }
+
         view.findViewById<View>(R.id.toolbar).setOnClickListener{
             mRecyclerView?.smoothScrollToPosition(0)
         }
-
 
         view.findViewById<View>(R.id.settings).setOnClickListener{
             context?.startActivity(Intent(context, SettingsActivity::class.java))
@@ -63,7 +66,7 @@ class NewsFragment : Fragment() {
             setColorSchemeColors(R.color.color_accent.toColor())
             setProgressBackgroundColorSchemeColor(R.color.color_primary.toColor())
             setProgressViewOffset(false, 0, 32.dpInt)
-            setOnRefreshListener { fetchData(true) }
+            setOnRefreshListener { fetchData(false) }
         }
 
         fetchData(false)
@@ -91,7 +94,8 @@ class NewsFragment : Fragment() {
             return
         }
         mIsLoading = true
-        Api.get(Constants.HOST_NEWS + mLastFeedId, success = { response ->
+        val id = if (isLoadMore) mLastFeedId else 0
+        Api.get(Constants.HOST_NEWS + id, success = { response ->
             doAsync {
                 val timeline = Timeline()
                 timeline.parseData(response.body()?.string())
@@ -101,11 +105,16 @@ class NewsFragment : Fragment() {
                     mHasMore = timeline.feedList.size > 0
                     mLastFeedId = timeline.lastFeedId
                     mAdapter?.updateData(isLoadMore, timeline.feedList, mHasMore)
+                    if (!isLoadMore) {
+                        mRecyclerView?.visibility = if (timeline.feedList.isEmpty()) View.GONE else View.VISIBLE
+                        mEmptyView?.visibility = if (timeline.feedList.isEmpty()) View.VISIBLE else View.GONE
+                    }
                 }
             }
         }, failure = {
             mSwipeRefreshLayout?.isRefreshing = false
             mIsLoading = false
+            Toast.makeText(context, R.string.common_network_error, Toast.LENGTH_SHORT).show()
         })
     }
 

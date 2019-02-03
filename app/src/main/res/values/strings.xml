@@ -39,6 +39,7 @@
     <string name="filter_item_count">%1$d / %2$d</string>
 
     <string name="news_no_more">暂无更多文章</string>
+    <string name="news_empty_view_tip">啊哦，获取资讯失败</string>
 
     <string name="settings_author">by dss886</string>
     <string name="settings_feedback">反馈问题</string>
