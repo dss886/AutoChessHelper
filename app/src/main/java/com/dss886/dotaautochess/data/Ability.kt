@@ -18,6 +18,7 @@ enum class Ability constructor(var desc: String, var iconRes: Int) {
     StickyNapalm("粘性燃油", R.mipmap.ability_sticky_napalm_icon),
     HeatSeekingMissile("热导飞弹", R.mipmap.ability_heat_seeking_missile_icon),
     ManaBreak("法力损毁", R.mipmap.ability_mana_break_icon),
+    Toss("投掷", R.mipmap.ability_toss_icon),
 
     ArcaneAura("奥数光环", R.mipmap.ability_arcane_aura_icon),
     WildAxes("野性之斧", R.mipmap.ability_wild_axes_icon),
@@ -31,6 +32,7 @@ enum class Ability constructor(var desc: String, var iconRes: Int) {
     LeechSeed("寄生种子", R.mipmap.ability_leech_seed_icon),
     MoonGlaives("月刃", R.mipmap.ability_moon_glaives_icon),
     NaturesCall("自然的呼唤", R.mipmap.ability_natures_call_icon),
+    WaveForm("波浪形态", R.mipmap.ability_waveform_icon),
 
     ShapeShift("变身", R.mipmap.ability_shapeshift_icon),
     PlagueWard("瘟疫守卫", R.mipmap.ability_plague_ward_icon),
@@ -45,6 +47,7 @@ enum class Ability constructor(var desc: String, var iconRes: Int) {
     ViperStrike("蝮蛇突袭", R.mipmap.ability_viper_strike_icon),
     RequiemOfSouls("魂之挽歌", R.mipmap.ability_requiem_of_souls_icon),
     LagunaBlade("神灭斩", R.mipmap.ability_laguna_blade_icon),
+    Metamorphosis("魔化", R.mipmap.ability_metamorphosis_icon),
 
     Doom("末日", R.mipmap.ability_doom_ability_icon),
     GhostShip("幽灵船", R.mipmap.ability_ghostship_icon),

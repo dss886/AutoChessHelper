@@ -19,6 +19,7 @@ enum class Hero constructor(var desc: String, var price: Price, var speciesList:
     Batrider("蝙蝠骑士", Price.GOLD_1, listOf(Species.Troll), Profession.Knight, Ability.StickyNapalm, R.mipmap.hero_batrider_icon),
     Tinker("修补匠", Price.GOLD_1, listOf(Species.Goblin), Profession.Craftsman, Ability.HeatSeekingMissile, R.mipmap.hero_tinker_icon),
     AntiMage("敌法师", Price.GOLD_1, listOf(Species.Elf), Profession.DemonHunter, Ability.ManaBreak, R.mipmap.hero_anti_mage_icon),
+    Tiny("小小", Price.GOLD_1, listOf(Species.Element), Profession.Warrior, Ability.Toss, R.mipmap.hero_tiny_icon),
 
     CrystalMaiden("水晶室女", Price.GOLD_2, listOf(Species.Human), Profession.Mage, Ability.ArcaneAura, R.mipmap.hero_crystal_maiden_icon),
     Beastmaster("兽王", Price.GOLD_2, listOf(Species.Orc), Profession.Hunter, Ability.WildAxes, R.mipmap.hero_beastmaster_icon),
@@ -32,6 +33,7 @@ enum class Hero constructor(var desc: String, var price: Price, var speciesList:
     TreantProtector("树精卫士", Price.GOLD_2, listOf(Species.Elf), Profession.Druid, Ability.LeechSeed, R.mipmap.hero_treant_protector_icon),
     Luna("月之骑士", Price.GOLD_2, listOf(Species.Elf), Profession.Knight, Ability.MoonGlaives, R.mipmap.hero_luna_icon),
     NaturesProphet("先知", Price.GOLD_2, listOf(Species.Elf), Profession.Druid, Ability.NaturesCall, R.mipmap.hero_natures_prophet_icon),
+    Morphling("变体精灵", Price.GOLD_2, listOf(Species.Element), Profession.Assassin, Ability.WaveForm, R.mipmap.hero_morphling_icon),
 
     Lycan("狼人", Price.GOLD_3, listOf(Species.Human, Species.Beast), Profession.Warrior, Ability.ShapeShift, R.mipmap.hero_lycan_icon),
     Venomancer("剧毒术士", Price.GOLD_3, listOf(Species.Beast), Profession.Warlock, Ability.PlagueWard, R.mipmap.hero_venomancer_icon),
@@ -46,6 +48,7 @@ enum class Hero constructor(var desc: String, var price: Price, var speciesList:
     Viper("冥界亚龙", Price.GOLD_3, listOf(Species.Dragon), Profession.Assassin, Ability.ViperStrike, R.mipmap.hero_viper_icon),
     ShadowFiend("影魔", Price.GOLD_3, listOf(Species.Demon), Profession.Warlock, Ability.RequiemOfSouls, R.mipmap.hero_shadow_fiend_icon),
     Lina("秀逗魔导士", Price.GOLD_3, listOf(Species.Human), Profession.Mage, Ability.LagunaBlade, R.mipmap.hero_lina_icon),
+    Terrorblade("灵魂守卫", Price.GOLD_3, listOf(Species.Demon), Profession.DemonHunter, Ability.Metamorphosis, R.mipmap.hero_terrorblade_icon),
 
     Doom("末日使者", Price.GOLD_4, listOf(Species.Demon), Profession.Warrior, Ability.Doom, R.mipmap.hero_doom_icon),
     Kunkka("海军上将", Price.GOLD_4, listOf(Species.Human), Profession.Warrior, Ability.GhostShip, R.mipmap.hero_kunkka_icon),
@@ -56,8 +59,8 @@ enum class Hero constructor(var desc: String, var price: Price, var speciesList:
     Alchemist("炼金术士", Price.GOLD_4, listOf(Species.Goblin), Profession.Warlock, Ability.AcidSpray, R.mipmap.hero_alchemist_icon),
     Disruptor("干扰者", Price.GOLD_4, listOf(Species.Orc), Profession.Shaman, Ability.StaticStorm, R.mipmap.hero_disruptor_icon),
     Medusa("蛇发女妖", Price.GOLD_4, listOf(Species.Naga), Profession.Hunter, Ability.StoneGaze, R.mipmap.hero_medusa_icon),
-    LoneDruid("利爪德鲁伊", Price.GOLD_4, listOf(Species.Beast), Profession.Druid, Ability.ElderDragonForm, R.mipmap.hero_lone_druid_icon),
     DragonKnight("龙骑士", Price.GOLD_4, listOf(Species.Human, Species.Dragon), Profession.Knight, Ability.SummonSpiritBear, R.mipmap.hero_dragon_knight_icon),
+    LoneDruid("利爪德鲁伊", Price.GOLD_4, listOf(Species.Beast), Profession.Druid, Ability.ElderDragonForm, R.mipmap.hero_lone_druid_icon),
 
     Gyrocopter("矮人直升机", Price.GOLD_5, listOf(Species.Dwarf), Profession.Craftsman, Ability.CallDown, R.mipmap.hero_gyrocopter_icon),
     Lich("巫妖", Price.GOLD_5, listOf(Species.Undead), Profession.Mage, Ability.ChainFrost, R.mipmap.hero_lich_icon),
