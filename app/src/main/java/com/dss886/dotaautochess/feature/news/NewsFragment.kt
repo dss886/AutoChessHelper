@@ -13,6 +13,7 @@ import com.dss886.dotaautochess.R
 import com.dss886.dotaautochess.network.Api
 import com.dss886.dotaautochess.network.data.Timeline
 import com.dss886.dotaautochess.utils.Constants
+import com.dss886.dotaautochess.utils.Logger
 import com.dss886.dotaautochess.utils.dpInt
 import com.dss886.dotaautochess.utils.toColor
 import org.jetbrains.anko.doAsync
@@ -64,10 +65,12 @@ class NewsFragment : Fragment() {
             setColorSchemeColors(R.color.color_accent.toColor())
             setProgressBackgroundColorSchemeColor(R.color.color_primary.toColor())
             setProgressViewOffset(false, 0, 32.dpInt)
-            setOnRefreshListener { fetchData(false) }
+            setOnRefreshListener {
+                fetchData(false, "pull")
+            }
         }
 
-        fetchData(false)
+        fetchData(false, "pull_auto")
         return view
     }
 
@@ -82,16 +85,17 @@ class NewsFragment : Fragment() {
             // Add a condition of (first > 0),
             // avoiding triggering onScrollBottom() on the initialization
             if (total > 1 && total <= first + visible + PRE_LOAD_COUNT && first > 0) {
-                fetchData(true)
+                fetchData(true, "load_more")
             }
         }
     }
 
-    private fun fetchData(isLoadMore : Boolean) {
+    private fun fetchData(isLoadMore : Boolean, method: String) {
         if (mIsLoading) {
             return
         }
         mIsLoading = true
+        Logger.onEvent(context, "News", method)
         val id = if (isLoadMore) mLastFeedId else 0
         Api.get(Constants.HOST_NEWS + id, success = { response ->
             doAsync {

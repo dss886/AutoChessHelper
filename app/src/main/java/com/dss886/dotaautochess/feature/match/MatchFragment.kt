@@ -11,6 +11,7 @@ import com.dss886.dotaautochess.R
 import com.dss886.dotaautochess.feature.match.manager.MatchChangeListener
 import com.dss886.dotaautochess.feature.match.manager.MatchManager
 import com.dss886.dotaautochess.feature.match.pool.HeroPoolView
+import com.dss886.dotaautochess.utils.Logger
 import com.dss886.dotaautochess.utils.UIUtils
 import com.dss886.dotaautochess.widget.AlertDialog
 
@@ -46,6 +47,7 @@ class MatchFragment : Fragment(), MatchChangeListener {
                 mAccept.setOnClickListener {
                     MatchManager.clearAllHero()
                     dismiss()
+                    Logger.onEvent(context, "HeroPool", "clear")
                 }
             }.show()
         }

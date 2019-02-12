@@ -14,10 +14,10 @@ import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.widget.NestedScrollView
 import com.dss886.dotaautochess.R
+import com.dss886.dotaautochess.app.BaseActivity
 import com.dss886.dotaautochess.network.Api
 import com.dss886.dotaautochess.network.data.Article
 import com.dss886.dotaautochess.network.data.Paragraph
@@ -28,7 +28,7 @@ import org.jetbrains.anko.uiThread
 /**
  * Created by dss886 on 2019/2/2.
  */
-class NewsDetailActivity: AppCompatActivity() {
+class NewsDetailActivity: BaseActivity() {
 
     companion object {
         fun startActivity(context: Context, title: String?, id : Long) {

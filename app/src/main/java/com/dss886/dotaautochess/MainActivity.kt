@@ -2,8 +2,8 @@ package com.dss886.dotaautochess
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.dss886.dotaautochess.app.BaseActivity
 import com.dss886.dotaautochess.feature.hero.AllHeroFragment
 import com.dss886.dotaautochess.feature.match.MatchFragment
 import com.dss886.dotaautochess.feature.news.NewsFragment
@@ -11,7 +11,7 @@ import com.dss886.dotaautochess.feature.setting.UpdateManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import java.lang.ref.WeakReference
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     companion object {
         private const val TAG_FRAGMENT_HERO = "1"

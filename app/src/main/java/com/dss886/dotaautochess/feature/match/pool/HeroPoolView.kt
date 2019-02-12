@@ -14,10 +14,12 @@ import com.dss886.dotaautochess.R
 import com.dss886.dotaautochess.data.Hero
 import com.dss886.dotaautochess.feature.filter.FilterActivity
 import com.dss886.dotaautochess.feature.match.manager.MatchManager
+import com.dss886.dotaautochess.utils.Logger
 import com.dss886.dotaautochess.utils.loadImage
 import com.dss886.dotaautochess.utils.toColor
 import com.dss886.dotaautochess.widget.AlertDialog
 import com.dss886.dotaautochess.widget.SimpleGridLayout
+import com.umeng.analytics.MobclickAgent
 
 /**
  * Created by dss886 on 2019/1/27.
@@ -67,6 +69,7 @@ class HeroPoolView @JvmOverloads constructor(context: Context, attrs: AttributeS
                 mAccept.setOnClickListener {
                     doRemoveHero(imageView, hero)
                     dismiss()
+                    Logger.onEvent(context, "HeroPool", "remove")
                 }
             }.show()
         }
@@ -75,7 +78,10 @@ class HeroPoolView @JvmOverloads constructor(context: Context, attrs: AttributeS
     private fun bindAddItem(imageView: ImageView) {
         imageView.scaleType = ImageView.ScaleType.CENTER_INSIDE
         imageView.setImageResource(R.drawable.ic_add)
-        imageView.setOnClickListener { context.startActivity(Intent(context, FilterActivity::class.java)) }
+        imageView.setOnClickListener {
+            context.startActivity(Intent(context, FilterActivity::class.java))
+            Logger.onEvent(context, "HeroPool", "add")
+        }
     }
 
     private fun doRemoveHero(imageView: ImageView, hero: Hero) {

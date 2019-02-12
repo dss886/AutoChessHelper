@@ -2,15 +2,15 @@ package com.dss886.dotaautochess.feature.setting
 
 import android.os.Bundle
 import android.view.MenuItem
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.dss886.dotaautochess.R
+import com.dss886.dotaautochess.app.BaseActivity
 
 /**
  * Created by dss886 on 2019/2/2.
  */
 
-class SettingsActivity : AppCompatActivity() , ISettingsController {
+class SettingsActivity : BaseActivity() , ISettingsController {
 
     companion object {
         const val TAG_SETTINGS = "settings"

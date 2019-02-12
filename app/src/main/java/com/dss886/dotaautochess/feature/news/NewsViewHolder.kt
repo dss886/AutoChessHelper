@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.dss886.dotaautochess.R
 import com.dss886.dotaautochess.feature.news.detail.NewsDetailActivity
 import com.dss886.dotaautochess.network.data.Feed
+import com.dss886.dotaautochess.utils.Logger
 import com.dss886.dotaautochess.utils.UIUtils
 import com.dss886.dotaautochess.utils.loadImage
 import com.dss886.dotaautochess.utils.toShortTime
@@ -53,6 +54,7 @@ class NewsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         mReplyCount.text = feed.replyCount.toString()
         itemView.setOnClickListener {
             NewsDetailActivity.startActivity(itemView.context, feed.title, feed.id)
+            Logger.onEvent(itemView.context, "News", "go_detail")
         }
     }
 

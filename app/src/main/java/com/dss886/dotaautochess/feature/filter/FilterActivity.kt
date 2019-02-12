@@ -5,9 +5,9 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.dss886.dotaautochess.R
+import com.dss886.dotaautochess.app.BaseActivity
 import com.dss886.dotaautochess.feature.filter.list.FilterListFragment
 import com.dss886.dotaautochess.utils.Constants
 import java.io.Serializable
@@ -15,7 +15,7 @@ import java.io.Serializable
 /**
  * Created by dss886 on 2019/1/29.
  */
-class FilterActivity : AppCompatActivity(), IFilterController {
+class FilterActivity : BaseActivity(), IFilterController {
 
     companion object {
         fun startActivity(context: Context, value: Serializable) {
