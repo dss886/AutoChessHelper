@@ -22,6 +22,14 @@
 3. Support the query of equipments and their synthetic map;
 4. Support the query of hero property and skill's detail info.
 
+## Donate
+
+AutoChessHelper is free, open source and no ads.
+
+If you like this app, welcome to fund any to encourage the author developing more useful functions.
+
+[PayPal](https://www.paypal.me/dss886)
+
 ## License
 
 ~~~
